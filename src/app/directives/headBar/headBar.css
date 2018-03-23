@@ -1,0 +1,66 @@
+
+/* Andy 2018-3-5 16:44  */
+.header-container {
+  position: fixed;
+  top: 0;
+  left: 0px;
+  right: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 260;
+  background: #000000;
+  color: #F9F9FB;
+}
+
+.app-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0px 8px 0px;
+}
+
+.user-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: #41D6C3;
+  border-radius: 8px;
+  margin-right: 7px;
+  vertical-align: sub;
+}
+
+.browser-nav {
+  color: #41D6C3;
+  padding: 8px 0px 12px 15px;
+  font-family: HelvNeue Roman for IBM;
+  font-size: 16px;
+  border-bottom: 4px solid #41D6C3;
+  width: 92px;
+}
+
+
+
+
+
+
+
+.menu-icon {
+  /* flex: 0.055; */
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Andy 2017-8-22 17:29  */
+.search-wrapper {
+	border-bottom: 1px solid #D8D8D8;
+	flex: 0.699;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+	background: transparent;
+	border: 0;
+	flex: 0.60;
+	font-size: 24px;
+}
+

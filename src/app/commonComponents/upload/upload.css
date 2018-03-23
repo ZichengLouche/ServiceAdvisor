@@ -1,0 +1,67 @@
+.backdrop-upload {
+  /* text-align: center; */
+  border-top: 5px solid #A8216E;
+  width: 500px;
+  height: 335px;
+}
+
+.backdrop-upload-body {
+	background: #FFFFFF;
+  position: relative;
+  padding: 63px 30px 0px 48px;
+  height: 255px;
+  display: flex;
+  flex-direction: column;
+}
+
+.backdrop-upload .backdrop-close {
+	position: absolute; 
+	top: 20px; 
+	right: 20px; 
+	width: 10px;
+}
+
+.backdrop-upload-footer {
+	display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #F0F3F6;
+  height: 88px;
+  padding-right: 30px;
+}
+
+.input-number {
+	border: 0;
+  border-bottom: 2px solid #979797;
+}
+
+.backdrop-upload ::-webkit-input-placeholder { /* WebKit browsers */
+  color: #979797;
+}
+.backdrop-upload ::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #979797;
+}
+.backdrop-upload :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #979797;
+}
+.backdrop-upload :-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: #979797;
+}
+
+::-webkit-file-upload-button {
+  padding: 0px 20px;
+  line-height: 45px;
+  border: 2px solid #A8216E;
+  background: transparent;
+  color: #A8216E;
+}
+
+label[for="file-upload"] {
+  background: transparent;
+  width: 100px;
+  text-align: center;
+  line-height: 45px;
+  height: 48px;
+  cursor: pointer;
+}
+

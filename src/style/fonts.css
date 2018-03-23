@@ -1,0 +1,43 @@
+/************************************************************************* Andy 2018.3.6 17:45 Local Font Families */
+ 
+@font-face {
+	font-family: HelvNeue Light for IBM;
+	src: url(./fonts/helvetica-neue-light.ttf);
+}
+
+@font-face {
+	font-family: Helvetica Neue;
+	src: url(./fonts/helvetica-neue-medium.ttf);
+}
+
+@font-face {
+	font-family: HelvNeue roman for IBM;
+	src: url(./fonts/helvetica-neue-roman.ttf);
+}
+
+@font-face {
+	font-family: HelvNeue Bold for IBM;
+	src: url(./fonts/helvetica-neue-bold.ttf);
+}
+
+/* @font-face {
+	font-family: LubalinBookforIBM;
+	src: url(./fonts/LubalinBookforIBM.otf);
+} */
+
+
+.be-font-07 {
+    font-size: 0.7rem;
+}
+
+.be-font-08 {
+    font-size: 0.8rem;
+}
+
+.be-font-light {
+	font-family: HelvNeueLightforIBM;
+}
+
+.be-font-medium {
+	font-family: HelvNeueMediumforIBM;
+}

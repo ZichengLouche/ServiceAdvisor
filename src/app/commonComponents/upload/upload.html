@@ -1,0 +1,30 @@
+<div class="backdrop df-center-single" ng-show="$ctrl.isShown">
+    <div class="backdrop-upload" style="">
+        <div class="backdrop-upload-body">
+            <img src="/images/close.svg" class="backdrop-close cp" data-ng-click="$ctrl.onCloseDropdown()">
+            <div style="font-family: HelvNeue Light for IBM;font-size: 26px;">Upload MEPL Files</div>
+            <div class="df" style="flex:1;">
+                <input type="text" placeholder="File upload" data-ng-model="$parent.searchString" data-ng-keyup="onKeyupInput($event, searchString)" id="output"  
+                       class="input-number" style="margin-right: 30px; flex: auto;"/>
+                       
+                <label for="file-upload" class="button-upload">Add files</label>
+                <input type="file" id="file-upload" ng-model="atsFiles.candidates" required ngf-select ngf-max-size="200MB" accept=".csv" ngf-pattern="'.csv'"
+                       class="dn" style="width:100px;">
+            </div>
+            
+            <input style="flex:1;" type="text" placeholder="Or provide a PMR Number" data-ng-model="$parent.searchString" data-ng-keyup="onKeyupInput($event, searchString)" id="output" 
+                   class="input-number" />
+            <!--    <i ng-show="form.candidates.$error.required && !form.candidates.$error.maxSize && !form.candidates.$error.pattern">required</i>
+            --> 
+            <div style="flex:1;">
+                <i ng-show="form.candidates.$error.maxSize">File too large, max 200M</i>
+                <i ng-show="form.candidates.$error.pattern">csv filetype only</i>
+            </div>                       
+        </div>
+
+        <div class="backdrop-upload-footer">
+            <button class="button-upload" style="width: 81px;background: transparent;border:none;margin-right: 15px;" ng-click="$ctrl.onCloseDropdown()">Cancel</button>
+            <button class="button-upload" style="width: 81px;background: transparent;" >Done</button>
+        </div>
+    </div>
+</div>

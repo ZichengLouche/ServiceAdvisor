@@ -1,0 +1,22 @@
+
+.content-container {
+  color: #1D3649;
+}
+
+.button-upload {
+  font-family: Helvetica Neue;
+  font-size: 14px;
+  font-weight: 500;
+  color: #A8216E;
+  width: 157px;
+  height: 40px;
+  background: #F9F9FB;
+  border: 2px solid #A8216E;
+}
+
+.home-desc {
+  font-family: HelvNeue Light for IBM;
+  font-size: 16px; 
+  width: 514px;
+  margin: 10px 0px 40px 0px;
+}

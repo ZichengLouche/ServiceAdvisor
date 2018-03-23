@@ -1,0 +1,56 @@
+<div class="select-files-container">
+    <div class="page-title" style="position: relative; left: -80px;">Select MEPL Files</div>
+
+    <div style="display: flex; flex-direction: column;">
+        <div style="align-self: flex-end;">
+            <button class="button-upload" ng-click="$ctrl.showUpload()" >Upload</button>
+        </div>
+        <div class="table" style="margin: 25px 0px 58px 0px;">
+            <div class="flex-row table-head" style="border-bottom: 1px solid #1D3649;">
+                <div style="width:5%; text-align: center;"></div>
+                <div style="width:17%;">NAME</div>
+                <div style="width:12%;">RELEASE</div>
+                <div style="width:16%;">SUBMISSION DATE</div>
+                <div style="width:18%;">REPORT DATE</div>
+                <div style="width:28%;">COMMENT</div>
+                <div style="width:4%;" data-ng-click="sortOrder('totalCost')"></div>
+            </div>
+            <div class="flex-row table-body" data-ng-repeat="file in $ctrl.fileList">
+                <div style="width:5%; text-align: center;"> <input class="dib" type="checkBox" data-ng-model="isSkipJusitification"/> </div>
+                <div style="width:17%;">Subsystem A </div>
+                <div style="width:12%;">v1</div>
+                <div style="width:16%;">2017-10-1</div>
+                <div style="width:18%;">2017-10-22</div>
+                <div style="width:28%;">
+                    <input class="item-value" style="width: 96%;" data-ng-model2="profile.userName" data-ng-readonly="!$ctrl['editable'+$index]" data-ng-class="{'item-value-editable':$ctrl['editable'+$index]}" value="good">
+                </div>
+                <div style="width:4%;">
+                    <img src="/images/edit.png" class="cp" style="margin-right: 15px;" data-ng-if="!$ctrl['editable'+$index]" data-ng-click='$ctrl.edit($index)'>
+                    <img src="/images/checkmark.svg" class="cp" style="margin-right: 15px; max-width: 16px;" data-ng-if="$ctrl['editable'+$index]" data-ng-click='$ctrl.save($index)'>
+                    <img src="/images/delete.png" class="cp">
+                </div>
+            </div>
+            <!-- 
+            <div class="flex-row table-body" data-ng-repeat1="file in fileList">
+                <div style="width:5%; text-align: center;"> <input class="dib" type="checkBox" data-ng-model="isSkipJusitification"/> </div>
+                <div style="width:17%;">Subsystem B </div>
+                <div style="width:12%;">v2</div>
+                <div style="width:16%;">2017-10-1</div>
+                <div style="width:18%;">2017-10-23</div>
+                <div style="width:28%;">
+                    <input class="item-value" style="width: 96%;" data-ng-model="profile.userName" data-ng-readonly="!$ctrl['editable'+$index]" data-ng-class="{'item-value-editable':$ctrl['editable'+$index]}" value="good">
+                </div>
+                <div style="width:4%;">
+                    <img src="/images/edit.png" class="cp" style="margin-right: 15px;" data-ng-if="!$ctrl['editable'+$index]" data-ng-click='$ctrl.edit()'>
+                    <img src="/images/back.png" class="cp" style="margin-right: 15px; max-width: 16px;" data-ng-if="$ctrl['editable'+$index]" data-ng-click='$ctrl.save()'>
+                    <img src="/images/delete.png" class="cp">
+                </div>
+            </div>
+            -->
+        </div>
+        <div style="align-self: flex-end;">
+            <button class="button-upload" style="background: transparent;border:none;margin-right: 15px;" ng-click="$ctrl.onCloseDropdown()">Cancel</button>
+            <button class="button-upload" style="" >Generate</button>
+        </div>
+    </div>
+</div>

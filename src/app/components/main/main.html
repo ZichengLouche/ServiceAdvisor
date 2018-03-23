@@ -1,0 +1,20 @@
+<div ng-init="init()">
+  <div head-bar></div>
+  <!-- Add error message bar here -->
+  
+  <div class="content-browser {{isMenuOpen ? 'layout-menu-open1' : 'layout-menu-closed'}}">
+  	<div message-bar></div>
+  	<div class="content-page">
+  		<div mask></div>
+  		<div ui-view class="page"></div>
+  	</div>
+  </div>
+</div>
+
+<div wba-dialog></div>
+<div iba-backdrop></div>
+<!-- <div upload></div> -->
+<upload ></upload>
+<div list-modal></div>
+<div iba-menu-dropdown></div>
+<!-- cdchew: remove the old alert , all alert message moved to the common message-bar <div wba-alert></div> -->

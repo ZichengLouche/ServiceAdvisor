@@ -1,0 +1,55 @@
+.main-container, .transit-container {
+    height: 100%;
+}
+/* .content-browser, .content-mobile {
+    background-color: rgb(240, 242, 244);
+    overflow-y: auto;
+} */
+
+/* Andy 2017.8.22 15:04 */
+.content-browser {
+    margin-top:150px;
+    margin-bottom: 50px;
+    /* transition: all 0.2s ease;
+  	will-change: transform; */
+}
+.content-browser .blank-tip {
+    padding: 32px;
+    background-color: white;
+    margin-top:16px;
+    font-family: ibm-font-italic;
+    font-size:14px;
+    color:#999;
+}
+.content-browser .container {
+    /* min-width: 530px; */
+    width: 100%;
+    display: inline-block;
+    text-align: left;
+}
+
+
+.mask {
+	position: fixed; 
+	width: 100%; 
+	height: 100%; 
+	background: rgba(55,55,55,0.30);
+	z-index: 60;
+}
+
+/****** layout ******/
+.content-page {
+	display: flex;
+	width: 100%;
+}
+
+.content-page .page {
+	width: calc(100% - 100px);
+	margin: 0 auto;
+}
+
+.content-browser .page-title {
+    font-family: HelvNeue Bold for IBM; 
+    font-size: 20px;
+    color: #1D3649;
+}
