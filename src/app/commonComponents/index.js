@@ -4,5 +4,6 @@
 import angular from 'angular';
 import commonTable from './table';
 import upload from './upload';
+import backdrop from './backdrop';
 
-export default angular.module('commonComponents', [commonTable, upload]).name;
+export default angular.module('commonComponents', [commonTable, upload, backdrop]).name;

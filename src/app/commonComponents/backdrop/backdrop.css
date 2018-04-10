@@ -1,0 +1,19 @@
+.backdrop-loading {
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  position: fixed;
+  z-index: 301;
+  background: rgba(39, 39, 39, 0.1);
+  text-align: center;
+}
+
+@media only screen and (min-width: 481px) {
+  .zIndex {
+    z-index: 301;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .zIndex {
+    z-index: 90;
+  }
+}
