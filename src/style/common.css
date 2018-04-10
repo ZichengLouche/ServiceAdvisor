@@ -50,3 +50,13 @@
 ol, ul {
     list-style: none;
 }
+
+.loader {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	animation: loader 1.4s infinite;
+	-moz-animation: loader 1.4s infinite;	/* Firefox */
+	-webkit-animation: loader 1.4s infinite;	/* Safari & Chrome */
+	-o-animation: loader 1.4s infinite;	/* Opera */
+}

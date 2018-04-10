@@ -1,6 +1,3 @@
-/**
- * Created by ji.wenjiang on 2017/4/21.
- */
 
 class http {
     constructor($http) {

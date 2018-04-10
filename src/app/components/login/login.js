@@ -1,5 +1,5 @@
 
-import url from '../../config/system.js';
+import url from '../../config/config.js';
 console.log('相对路径配置：'+JSON.stringify(url));
 
 export default class loginCtrl {

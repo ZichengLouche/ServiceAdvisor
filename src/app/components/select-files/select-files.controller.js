@@ -1,11 +1,19 @@
-
-
 export default class SelectFilesController {
 	// common attrs Andy 2018.3.2 17:17
     // static $inject = ['http'];
-    constructor($rootScope) {
-        [this.$rootScope, this.name] = [$rootScope, 'login'];
+    constructor($rootScope, fileService) {
+        [this.$rootScope, this.fileService, this.name] = [$rootScope, fileService, 'login'];
         this.fileList = [{'name':'Subsystem A'}, {'name':'Subsystem B'}];
+    }
+
+    $onInit() {
+        this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
+        this.fileService.getFileList().then((res) => {
+            this.fileList = res.data.datas;
+
+        }).finally(() => {
+            this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
+        });
     }
 
     edit($index) {
@@ -58,6 +66,6 @@ export default class SelectFilesController {
     }
 }
 
-SelectFilesController.$inject = ['$rootScope'];
+SelectFilesController.$inject = ['$rootScope', 'fileService'];
 
 

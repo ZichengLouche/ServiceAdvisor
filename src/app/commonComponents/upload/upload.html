@@ -4,16 +4,16 @@
             <img src="/images/close.svg" class="backdrop-close cp" data-ng-click="$ctrl.onCloseDropdown()">
             <div style="font-family: HelvNeue Light for IBM;font-size: 26px;">Upload MEPL Files</div>
             <div class="df" style="flex:1;">
-                <input type="text" placeholder="File upload" data-ng-model="$parent.searchString" data-ng-keyup="onKeyupInput($event, searchString)" id="output"  
-                       class="input-number" style="margin-right: 30px; flex: auto;"/>
+                <input type="text" placeholder="File upload" ng-model="$ctrl.meplFilesNames" disabled id="output"  
+                       class="input-border" style="margin-right: 30px; flex: auto; background-color: transparent;"/>
                        
                 <label for="file-upload" class="button-upload">Add files</label>
-                <input type="file" id="file-upload" ng-model="atsFiles.candidates" required ngf-select ngf-max-size="200MB" accept=".csv" ngf-pattern="'.csv'"
-                       class="dn" style="width:100px;">
+                <input type="file" id="file-upload" ng-model="$ctrl.meplFiles" required ngf-max-size="200MB" accept=".txt" multiple
+                       class="dn" style="width:100px;" ng-change="$ctrl.doCheck()" onchange="angular.element(this).scope().$ctrl.fileToUpload(this)" ng-click="$ctrl.doCheck()">
             </div>
             
             <input style="flex:1;" type="text" placeholder="Or provide a PMR Number" data-ng-model="$parent.searchString" data-ng-keyup="onKeyupInput($event, searchString)" id="output" 
-                   class="input-number" />
+                   class="input-border" />
             <!--    <i ng-show="form.candidates.$error.required && !form.candidates.$error.maxSize && !form.candidates.$error.pattern">required</i>
             --> 
             <div style="flex:1;">
@@ -24,7 +24,7 @@
 
         <div class="backdrop-upload-footer">
             <button class="button-upload" style="width: 81px;background: transparent;border:none;margin-right: 15px;" ng-click="$ctrl.onCloseDropdown()">Cancel</button>
-            <button class="button-upload" style="width: 81px;background: transparent;" >Done</button>
+            <button class="button-upload" style="width: 81px;background: transparent;" ng-click="$ctrl.upload()">Done</button>
         </div>
     </div>
 </div>
