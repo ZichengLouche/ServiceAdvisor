@@ -4,18 +4,20 @@
             <img src="/images/close.svg" class="backdrop-close cp" data-ng-click="$ctrl.onCloseDropdown()">
             <div style="font-family: HelvNeue Light for IBM;font-size: 26px;">Upload MEPL Files</div>
             <div class="df" style="flex:1;">
-                <input type="text" placeholder="File upload" ng-model="$ctrl.meplFilesNames" disabled id="output"  
-                       class="input-border" style="margin-right: 30px; flex: auto; background-color: transparent;"/>
-                       
-                <label for="file-upload" class="button-upload">Add files</label>
-                <input type="file" id="file-upload" ng-model="$ctrl.meplFiles" required ngf-max-size="200MB" accept=".txt" multiple
+                <input type="text" placeholder="File upload" ng-model1="$ctrl.meplFilesNames" disabled id="output"  value="{{ $ctrl.meplFiles.length > 1 ? $ctrl.meplFiles.length + ' Files Selected' : $ctrl.meplFilesNames}}"
+                       class="input-border" style="margin-right: 30px; flex: auto; "/>
+                
+                <label for="file-upload" class="button-upload" ng-class="{'filter-gc':$ctrl.pmrNumber}" ng-click="$ctrl.isUploadLocalFile($event);">Browse</label>
+                <input type="file" id="file-upload" ng-model="$ctrl.meplFiles" required ngf-max-size="200MB" accept=".txt" multiple 
                        class="dn" style="width:100px;" ng-change="$ctrl.doCheck()" onchange="angular.element(this).scope().$ctrl.fileToUpload(this)" ng-click="$ctrl.doCheck()">
             </div>
             
-            <input style="flex:1;" type="text" placeholder="Or provide a PMR Number" data-ng-model="$parent.searchString" data-ng-keyup="onKeyupInput($event, searchString)" id="output" 
-                   class="input-border" />
+            <input style="flex:1;" type="text" placeholder="Or provide a PMR Number" data-ng-model="$ctrl.pmrNumber"  id="output" 
+                   class="input-border" ng-class="{'filter-gc':$ctrl.meplFiles.length}" ng-disabled="$ctrl.meplFiles.length" >
             <!--    <i ng-show="form.candidates.$error.required && !form.candidates.$error.maxSize && !form.candidates.$error.pattern">required</i>
-            --> 
+             
+            <input type="file" id="t" multiple> -->
+
             <div style="flex:1;">
                 <i ng-show="form.candidates.$error.maxSize">File too large, max 200M</i>
                 <i ng-show="form.candidates.$error.pattern">csv filetype only</i>

@@ -25,14 +25,11 @@ export default class UploadController {
         // this.doCheck = this.doCheck;
     }
 
-    $onChanges(changes) {
-        console.log(changes);
-        console.log(this.name);
-    }
-
-    $doCheck(changes) {
-        console.log(changes);
-        console.log(this.name);
+    isUploadLocalFile($event) {
+        if(this.pmrNumber) {
+            $event.preventDefault();
+            return false;
+        }
     }
 
     // Andy 2018.4.4 14:57

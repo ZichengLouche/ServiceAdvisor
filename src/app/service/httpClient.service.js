@@ -24,7 +24,7 @@ class HttpClient {
     }
 
     var startTime = new Date().getTime();
-    this.$http(option).then(function (resp) {
+    this.$http(option).then((resp) => {
       if (source == 'IBM') {
         if (resp.status == 200) {
           if (resp.data) {
@@ -33,18 +33,18 @@ class HttpClient {
             defer.reject(resp.data.errorMessage);
           }
         } else {
-          this.$log.error(resp);
+          this.$log.error('$http response rejected :', resp);
           defer.reject('Request Failed. status=' + resp.status);
         }
       } else {
         defer.resolve(resp.data);
       }
-    }, function (err) {
+    }, (err) => {
       var endTime = new Date().getTime();
       if (endTime - startTime >= Config.httpTimedout) {
         this.$rootScope.$broadcast('http:timedout');
       }
-      this.$log.error('$http response rejected and error:', err);
+      this.$log.error('$http request occured error:', err);
       defer.reject(err);
     });
 

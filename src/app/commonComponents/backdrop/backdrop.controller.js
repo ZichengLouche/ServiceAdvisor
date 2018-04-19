@@ -39,16 +39,6 @@ export default class BackdropController {
     this.backdropStyle.height = (bottom) + 'px';
   }
 
-  $onChanges(changes) {
-      console.log(changes);
-      console.log(this.name);
-  }
-
-  $doCheck(changes) {
-      console.log(changes);
-      console.log(this.name);
-  }
-
   $onDestroy() {
       this.backdropLoadingListener();
       this.backdropResizeListener();

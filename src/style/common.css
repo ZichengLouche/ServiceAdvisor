@@ -60,3 +60,9 @@ ol, ul {
 	-webkit-animation: loader 1.4s infinite;	/* Safari & Chrome */
 	-o-animation: loader 1.4s infinite;	/* Opera */
 }
+
+/* Andy 2018.4.12 15:30 */
+.filter-gc {
+	filter: grayscale(100%);
+	cursor: auto !important;
+  }
