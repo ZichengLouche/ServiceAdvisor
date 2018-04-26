@@ -20,10 +20,10 @@
 	src: url(./fonts/helvetica-neue-bold.ttf);
 }
 
-/* @font-face {
-	font-family: LubalinBookforIBM;
-	src: url(./fonts/LubalinBookforIBM.otf);
-} */
+@font-face {
+	font-family: Lubalin Book for IBM;
+	src: url(./fonts/lubalin-book-for-IBM.ttf);
+}
 
 
 .be-font-07 {

@@ -5,8 +5,8 @@
 export default class MainController {
 	// common attrs Andy 2018.3.2 17:17
     // static $inject = ['http'];
-    constructor($rootScope, http) {
-        [this.$rootScope, this.http, this.name] = [$rootScope, http, 'login'];
+    constructor($rootScope, http, $state) {
+        [this.$rootScope, this.http, this.routerType, this.name] = [$rootScope, http, $state.current.routerType, 'login'];
     }
     login() {
         // this.http.get({userName: 'link', userPassword: '23333'}, url.login, (data) => {
@@ -20,6 +20,6 @@ export default class MainController {
     }
 }
 
-MainController.$inject = ['$rootScope', 'http'];
+MainController.$inject = ['$rootScope', 'http', '$state'];
 
 

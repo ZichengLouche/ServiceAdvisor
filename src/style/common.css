@@ -15,6 +15,7 @@
 .disable { cursor: not-allowed; opacity: 0.3; }
 .clear {*zoom: 1;} .clear:after {display: block; content: ""; height: 0; clear: both; overflow: hidden; visibility: hidden;}
 .fl { float: left; } .fr { float: right; }
+.pr { position: relative; }
 .tl { text-align: left; } .tc { text-align: center; } .tr { text-align: right; }
 .vt { vertical-align: top; } .vm { vertical-align: middle; } .vb { vertical-align: bottom; }
 
