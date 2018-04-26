@@ -17,10 +17,10 @@
             </div>
             <div class="flex-row table-body" data-ng-repeat="file in $ctrl.fileList">
                 <div style="width:5%; text-align: center;"> <input class="dib" type="checkBox" data-ng-model="isSkipJusitification"/> </div>
-                <div style="width:17%;">Subsystem A </div>
-                <div style="width:12%;">v1</div>
-                <div style="width:16%;">2017-10-1</div>
-                <div style="width:18%;">2017-10-22</div>
+                <div style="width:17%;"> {{ file.FILENAME.slice(file.FILENAME.lastIndexOf('.', file.FILENAME.lastIndexOf('.') - 1) + 1) }} </div>
+                <div style="width:12%;"> {{ file.RELEASE }} </div>
+                <div style="width:16%;"> {{ file.CREATETIME }} </div>
+                <div style="width:18%;"> {{ file.REPORTTIME }} </div>
                 <div style="width:28%;">
                     <input class="item-value" style="width: 96%;" data-ng-model2="profile.userName" data-ng-readonly="!$ctrl['editable'+$index]" data-ng-class="{'item-value-editable':$ctrl['editable'+$index]}" value="good">
                 </div>
@@ -50,7 +50,7 @@
         </div>
         <div style="align-self: flex-end;">
             <button class="button-upload" style="background: transparent;border:none;margin-right: 15px;" ng-click="$ctrl.onCloseDropdown()">Cancel</button>
-            <button class="button-upload" style="" >Generate</button>
+            <button class="button-upload" >Generate</button>
         </div>
     </div>
 </div>

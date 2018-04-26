@@ -15,10 +15,22 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
         })
         .state('main.home', {
             url: '/home',
+            routerType: 'meplFiles',
             template: '<home show-upload="$ctrl.showUpload()"></home>'
         })
         .state('main.selectFiles', {
             url: '/selectFiles',
+            routerType: 'meplFiles',
             template: '<select-files show-upload="$ctrl.showUpload()"></select-files>'
+        })
+        .state('main.report', {
+            url: '/report',
+            routerType: 'report',
+            template: '<report></report>'
+        })
+        .state('main.reportDetail', {
+            url: '/reportDetail',
+            routerType: 'report',
+            template: '<report-detail></report-detail>'
         })
 }

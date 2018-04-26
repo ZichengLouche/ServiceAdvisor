@@ -1,0 +1,37 @@
+<div class="report-container">
+    <div style="display: flex; justify-content: space-between; margin: 0px 0px 10px 20px;">
+        <div class="page-title">Health Check Reports</div>
+        <button class="button-upload" ng-click="$ctrl.showUpload()">Create</button>
+    </div>
+    <div class="" style="display: flex; justify-content: space-between;" data-ng-repeat="row in $ctrl.reportList">
+        <div class="item" data-ng-repeat="report in row">
+            <div class="item-top" >
+                <div >
+                    <span style="font-size: 16px;">SubsystemA</span>  <br>
+                    <span style="font-size: 12px; color: #777677;"><spa style="color: blue;">NEW</span> - Updated: Jan 01, 2017 </span>
+                </div>
+                <span style="font-family: Lubalin Book for IBM; font-size: 40px; color: #8CD211;">90</span>
+            </div>
+            <div class="item-bottom df">
+                <div class="item-bottom-part">
+                    <div class="item-part-number">
+                        3
+                    </div>
+                    <div class=""  >Missing HIPERs</div>
+                </div>
+                <div class="item-bottom-part">
+                    <div class="item-part-number">
+                        6
+                    </div>
+                    <div class="" >PEs</div>
+                </div>
+                <div class="item-bottom-part">
+                    <div class="item-part-number">
+                        6
+                    </div>
+                    <div class="" >Inconsistencies</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
