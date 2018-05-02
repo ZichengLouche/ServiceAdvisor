@@ -1,38 +1,15 @@
-
 import angular from 'angular';
+import controller from './table.controller.js';
 import template from './table.html';
 import './table.less';
-
-class TableController {
-    constructor() {
-    }
-    setAll(){
-        var isAll = this.isAll;
-        angular.forEach(this.data,  function (value) {
-            value.isSelected = isAll;
-        })
-    }
-    $onInit() {
-        
-    }
-
-    $onChanges() {
-    }
-
-    $onDestroy() {
-    }
-
-    $postLink() {
-    }
-}
 
 export default angular.module('sass.common', [])
     .component('commonTable', {
         template    : template,
-        controller  : TableController,
+        controller  : controller,
         bindings: {
             title: '@',
-            tHead: '<',
+            tableColumns: '<',
             data: '<',
             isShowCheckbox: '<',
             btns: '<'

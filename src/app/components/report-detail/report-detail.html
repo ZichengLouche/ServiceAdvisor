@@ -16,34 +16,37 @@
                 <span class="report-detail-score">90</span>
             </div>
             <div class="item">
-                <div class="page-title" style="font-size: 14px;">
-                    Missing HIPERs
+                <div class="item-outline">
+                    <div class="page-title" style="font-size: 14px;"> Missing HIPERs </div>
+                    <div class="item-part-number" style="color:#A8216E">
+                        <span style="margin-right: 10px;">3</span> 
+                        <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=true'>
+                        <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=false'>
+                    </div>
                 </div>
-                <div class="item-part-number" style="color:#A8216E">
-                    <span style="margin-right: 10px;">3</span> 
-                    <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=true'>
-                    <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=false'>
-                </div>
+                <common-table table-columns="$ctrl.tableColumns" data="$ctrl.missingHIPERs" ng-show="$ctrl.showHIPERs"></common-table>
             </div>
             <div class="item">
-                <div class="page-title" style="font-size: 14px;">
-                    PEs
+                <div class="item-outline">
+                    <div class="page-title" style="font-size: 14px;"> PEs </div>
+                    <div class="item-part-number" style="color:#A8216E">
+                        <span style="margin-right: 10px;">5</span> 
+                        <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showPEs' ng-click='$ctrl.showPEs=true'>
+                        <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showPEs' ng-click='$ctrl.showPEs=false'>
+                    </div>
                 </div>
-                <div class="item-part-number" style="color:#A8216E">
-                    <span style="margin-right: 10px;">5</span> 
-                    <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showPEs' ng-click='$ctrl.showPEs=true'>
-                    <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showPEs' ng-click='$ctrl.showPEs=false'>
-                </div>
+                <common-table table-columns="$ctrl.tableColumns" data="$ctrl.PEs" ng-show="$ctrl.showPEs"></common-table>
             </div>
             <div class="item">
-                <div class="page-title" style="font-size: 14px;">
-                    Inconsistencies
+                <div class="item-outline">
+                    <div class="page-title" style="font-size: 14px;"> Inconsistencies </div>
+                    <div class="item-part-number" style="color:#A8216E">
+                        <span style="margin-right: 10px;">6</span> 
+                        <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=true'>
+                        <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=false'>
+                    </div>
                 </div>
-                <div class="item-part-number" style="color:#A8216E">
-                    <span style="margin-right: 10px;">6</span> 
-                    <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=true'>
-                    <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=false'>
-                </div>
+                <common-table table-columns="$ctrl.tableColumnsOfInconsistencies" data="$ctrl.inconsistencies" ng-show="$ctrl.showInconsistencies"></common-table>
             </div>
         </div>
         <div style="align-self: flex-end;" >

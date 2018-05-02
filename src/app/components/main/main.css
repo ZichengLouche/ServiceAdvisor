@@ -1,5 +1,11 @@
-.main-container, .transit-container {
+.body-container, .transit-container {
     height: 100%;
+}
+.body-container {
+    font-family: HelvNeue Light for IBM;
+    font-size: 14px;
+    color: #1D3649;
+    background: #F9F9FB;
 }
 
 
@@ -8,8 +14,6 @@
     padding: 150px 0px 50px 0px;
     /* background: #F9F9FB; */
 }
-
-
 
 .mask {
 	position: fixed; 

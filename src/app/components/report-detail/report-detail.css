@@ -3,11 +3,13 @@
 	padding: 0px 80px;
 }
 .report-detail-container .item {
-	background: #F9F9FB;
+	background: #FFFFFF;
   box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.1);
   margin-bottom: 20px;
   padding: 25px 50px 18px 25px;
-  display: flex;
+}
+.report-detail-container .item .item-outline {
+	display: flex;
   justify-content: space-between;
 }
 
