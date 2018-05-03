@@ -1,0 +1,32 @@
+/*********************************************** 2018.5.2 14:27 messagebar-Alert (message) */
+.messagebar-alert {
+    position: fixed;
+    left: 0;
+    z-index: 3000;
+    text-align: center;
+    width: 100%;
+    height: 35px;
+    top: 80px;
+    color: #ffffff;
+}
+
+.messagebar-alert .messagebar-container {
+	padding: 10px 15px;
+    font-size: 14px;
+    line-height: 14px;
+    max-width: calc(90% - 30px);
+    background: #000000;
+   	opacity: 0.6;
+   	position: relative;
+    display: inline-block;
+}
+.messagebar-alert .warning {
+    background: #d9534f;
+    /* background: #e69b3e; */
+    opacity: 0.8;
+}
+.messagebar-alert img {
+	width: 14px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
