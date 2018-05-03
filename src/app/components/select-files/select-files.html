@@ -27,7 +27,7 @@
                 <div style="width:4%;">
                     <img src="/images/edit.png" class="cp" style="margin-right: 15px;" data-ng-if="!$ctrl['editable'+$index]" data-ng-click='$ctrl.edit($index)'>
                     <img src="/images/checkmark.svg" class="cp" style="margin-right: 15px; max-width: 16px;" data-ng-if="$ctrl['editable'+$index]" data-ng-click='$ctrl.save($index)'>
-                    <img src="/images/delete.png" class="cp">
+                    <img src="/images/delete.png" class="cp" data-ng-click='$ctrl.delete(file)'>
                 </div>
             </div>
             <!-- 
@@ -50,7 +50,7 @@
         </div>
         <div style="align-self: flex-end;">
             <button class="button-upload" style="background: transparent;border:none;margin-right: 15px;" ng-click="$ctrl.onCloseDropdown()">Cancel</button>
-            <button class="button-upload" >Generate</button>
+            <button class="button-upload" ng-click="$ctrl.generate()">Generate</button>
         </div>
     </div>
 </div>

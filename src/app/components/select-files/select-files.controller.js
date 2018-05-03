@@ -1,9 +1,10 @@
 export default class SelectFilesController {
 	// common attrs Andy 2018.3.2 17:17
     // static $inject = ['http'];
-    constructor($rootScope, fileService) {
-        [this.$rootScope, this.fileService, this.name] = [$rootScope, fileService, 'login'];
+    constructor($rootScope, $scope, $state, $q, fileService) {
+        [this.$rootScope, this.$scope, this.$state, this.$q, this.fileService, this.name] = [$rootScope, $scope, $state, $q, fileService, 'SelectFilesController'];
         this.fileList = [{'name':'Subsystem A'}, {'name':'Subsystem B'}];
+        $scope.$parent.$parent.$ctrl.routerType = $state.current.routerType;
     }
 
     $onInit() {
@@ -18,6 +19,34 @@ export default class SelectFilesController {
 
     edit($index) {
         this['editable'+$index] = true;
+    }
+
+    delete(item) {
+        this.$rootScope.$broadcast('DIALOG', {
+            title: 'Confirmation',
+            content: 'Are you sure to delete the fille?',
+            leftBtnName: 'Cancel',
+            rightBtnName: 'Delete',
+            submitAction: () => {
+                var defer = this.$q.defer();
+                // WishlistService.addWishItem(LoginService.getCurrentProfileId(), productId).then(function (data) {
+                //     $log.debug(data.status);
+                //     if (data.status === "Success") {
+                //         $rootScope.$broadcast('ALERT', {
+                //             message: 'Add to wish list successfully',
+                //             success: true
+                //         });
+                //         defer.resolve();
+                //     } else {
+                //         defer.reject();
+                //     }
+                // }, function (err) {
+                //     $log.error(err);
+                //     defer.reject();
+                // });
+                return defer.promise;
+            }
+        });
     }
 
     save($index) {
@@ -64,8 +93,26 @@ export default class SelectFilesController {
 
         this['editable'+$index] = false;
     }
+
+    generate() {
+        // if(!this.formData) {
+        //     alert('please select MEPL file or input PMR number!');
+        //     return ;
+        // }
+
+        this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
+        this.fileService.upload(this.formData).then((data) => {
+            console.log(data);
+            this.onCloseDropdown();
+            this.$state.go('main.selectFiles');
+
+        }).finally(() => {
+            this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
+            this.$state.go('main.report');
+        });
+    }
 }
 
-SelectFilesController.$inject = ['$rootScope', 'fileService'];
+SelectFilesController.$inject = ['$rootScope', '$scope', '$state', '$q', 'fileService'];
 
 
