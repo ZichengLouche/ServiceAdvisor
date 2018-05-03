@@ -5,8 +5,8 @@
 export default class HomeController {
 	// common attrs Andy 2018.3.2 17:17
     // static $inject = ['http'];
-    constructor($rootScope) {
-        [this.$rootScope, this.name] = [$rootScope, 'login'];
+    constructor($rootScope, $scope, $state) {
+        [this.$rootScope, this.$scope, this.$state, this.name] = [$rootScope, $scope, $state, 'HomeController'];
     }
     login() {
         // this.http.get({userName: 'link', userPassword: '23333'}, url.login, (data) => {
@@ -20,6 +20,6 @@ export default class HomeController {
     // }
 }
 
-HomeController.$inject = ['$rootScope'];
+HomeController.$inject = ['$rootScope', '$scope', '$state'];
 
 

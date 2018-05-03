@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-import controller from './upload.controller.js'
+import controller from './upload.controller.js';
 import template from './upload.html';
 import './upload.css';
 
