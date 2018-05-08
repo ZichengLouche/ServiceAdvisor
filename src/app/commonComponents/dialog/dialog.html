@@ -1,0 +1,22 @@
+<div class="dialog" style="width:100%;height:100%" data-ng-show="$ctrl.isShown">
+    <!-- data-ng-style="dialogDetail" -->
+    <div class="dialog-container" style="top:20%">
+        <!-- data-ng-style="containerDetail" -->
+        <div class="title">{{$ctrl.title}}</div>
+        <div class="{{$ctrl.hasTextarea ? 'dialog-content' : 'content'}}" data-ng-class="{'warn': $ctrl.warningInfo}">
+            {{$ctrl.content}}
+            <div data-ng-show="$ctrl.hasTextarea" class="mt10">
+                <textarea rows="4" cols="1" data-ng-model="$ctrl.justificationText"></textarea>
+            </div>
+        </div>
+        <div data-ng-show="$ctrl.warningInfo" class="warnInfo">*Please fill in at least 20 characters in the justification area.</div>
+
+        <div class="foot">
+            <div data-ng-show="!$ctrl.isLoading">
+                <a class="btn white-btn" data-ng-click="$ctrl.onCancel()" data-ng-if="$ctrl.leftBtnName.length > 0">{{$ctrl.leftBtnName}}</a>
+                <a class="btn blue-btn" data-ng-click="$ctrl.onSubmit()" data-ng-if="$ctrl.rightBtnName.length > 0" style="margin-left:5px;">{{$ctrl.rightBtnName}}</a>
+            </div>
+            <img data-ng-show="$ctrl.isLoading" class="loader" data-ng-src="image/loading/loading.svg" />
+        </div>
+    </div>
+</div>

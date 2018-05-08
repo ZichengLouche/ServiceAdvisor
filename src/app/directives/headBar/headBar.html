@@ -3,5 +3,8 @@
     <div style="font-family: HelvNeue Medium for IBM;font-size: 12px;">IBM zServiceAdvisor Sample Application</div>
     <div style="font-family: HelvNeue Roman for IBM;font-size: 14px;"><span class="user-icon"></span>User Name</div>
   </div>
-  <div class="browser-nav">Reports</div>
+  <div>
+    <div class="browser-nav {{ $ctrl.routerType == 'meplFiles' ? 'tab-actived' : ''}}">MEPL Files</div>
+    <div class="browser-nav" ng-class="{'tab-actived':$ctrl.routerType == 'report'}">Reports</div>
+  </div>
 </div>

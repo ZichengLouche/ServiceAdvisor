@@ -1,33 +1,19 @@
-.main-container, .transit-container {
+.body-container, .transit-container {
     height: 100%;
 }
-/* .content-browser, .content-mobile {
-    background-color: rgb(240, 242, 244);
-    overflow-y: auto;
-} */
+.body-container {
+    font-family: HelvNeue Light for IBM;
+    font-size: 14px;
+    color: #1D3649;
+    background: #F9F9FB;
+}
+
 
 /* Andy 2017.8.22 15:04 */
-.content-browser {
-    margin-top:150px;
-    margin-bottom: 50px;
-    /* transition: all 0.2s ease;
-  	will-change: transform; */
+.content-body {
+    padding: 150px 0px 50px 0px;
+    /* background: #F9F9FB; */
 }
-.content-browser .blank-tip {
-    padding: 32px;
-    background-color: white;
-    margin-top:16px;
-    font-family: ibm-font-italic;
-    font-size:14px;
-    color:#999;
-}
-.content-browser .container {
-    /* min-width: 530px; */
-    width: 100%;
-    display: inline-block;
-    text-align: left;
-}
-
 
 .mask {
 	position: fixed; 
@@ -38,18 +24,19 @@
 }
 
 /****** layout ******/
-.content-page {
-	display: flex;
-	width: 100%;
-}
 
 .content-page .page {
 	width: calc(100% - 100px);
 	margin: 0 auto;
 }
 
-.content-browser .page-title {
+.content-page .page-title {
     font-family: HelvNeue Bold for IBM; 
     font-size: 20px;
     color: #1D3649;
 }
+
+.content-page .item-part-number {
+    font-family: Lubalin Book for IBM;
+    font-size: 25px;
+  }

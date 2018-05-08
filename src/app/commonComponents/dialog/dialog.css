@@ -1,0 +1,66 @@
+/***************************************************Andy 2018.5.3 10:23 Dialog */
+.dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 3000;
+    text-align: center;
+}
+.dialog a:hover {
+	text-decoration: none;
+}
+.dialog>.dialog-container {
+    display: inline-block;
+    background: #ffffff;
+    box-shadow: 0px 8px 24px 0px rgba(128, 128, 128, 0.10);
+    width: 600px;
+    height: auto;
+    position: relative;
+}
+.dialog>.dialog-container>.title {
+    text-align: left;
+    font-family: ibm-font-bold;
+    font-size: 16px;
+    color: #333;
+    padding: 16px;
+    border-bottom: solid 1px #f1f1f1;
+}
+.dialog>.dialog-container>.content {
+    font-family: ibm-font-regular;
+    font-size: 14px;
+    color: #323232;
+    text-align: left;
+    padding: 48px;
+    border-bottom: solid 1px #f1f1f1;
+}
+.dialog>.dialog-container>.dialog-content {
+    font-family: ibm-font-regular;
+    font-size: 16px;
+    color: #323232;
+    text-align: left;
+}
+.dialog>.dialog-container>.dialog-content textarea{
+    font-family: ibm-font-regular;
+    background: #ffffff;
+    border: 1px solid #979797;
+    color: #323232;
+}
+.dialog>.dialog-container>.foot {
+    padding: 15px;
+    text-align: right;
+}
+.dialog>.dialog-container>.foot>.loader {
+	height: 34px;
+}
+.dialog>.dialog-container>.warnInfo {
+    color: #FF5C49;
+    font-family: ibm-font-regular;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 20px;
+    padding-bottom: 6px;
+}
+.dialog>.dialog-container>.warn textarea{
+    border-color: #FF5C49;
+}

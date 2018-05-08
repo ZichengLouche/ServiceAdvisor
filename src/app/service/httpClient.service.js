@@ -42,7 +42,7 @@ class HttpClient {
     }, (err) => {
       var endTime = new Date().getTime();
       if (endTime - startTime >= Config.httpTimedout) {
-        this.$rootScope.$broadcast('http:timedout');
+        this.$rootScope.$broadcast('http:timedout', {type: err.status});
       }
       this.$log.error('$http request occured error:', err);
       defer.reject(err);

@@ -1,0 +1,57 @@
+<div class="report-detail-container">
+    <div class="page-title" style="position: relative; left: -80px;">
+        <img src="/images/back.png" class="cp" style="margin-right: 10px;" ui-sref="main.report"> Subsystem A
+    </div>
+
+    <div class="" style="display: flex; flex-direction: column;">
+        <div style="align-self: flex-end;">
+            <button class="button-upload" ng-click="$ctrl.showUpload()">Send</button>
+        </div>
+        <div style="margin:65px 0px 45px 0px;">
+            <div class="item pr">
+                <div>
+                    <span class="page-title" style="font-size: 14px;">Updated: 2018-01-01</span>   <br>
+                    <span style="font-family: HelvNeue Light for IBM; font-size: 12px; color: #1D3649;">Comment: xxxxxxxxxxxxxxxxxxxxx</span>
+                </div>
+                <span class="report-detail-score">90</span>
+            </div>
+            <div class="item">
+                <div class="item-outline">
+                    <div class="page-title" style="font-size: 14px;"> Missing HIPERs </div>
+                    <div class="item-part-number" style="color:#A8216E">
+                        <span style="margin-right: 10px;">3</span> 
+                        <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=true'>
+                        <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=false'>
+                    </div>
+                </div>
+                <common-table table-columns="$ctrl.tableColumns" data="$ctrl.missingHIPERs" ng-show="$ctrl.showHIPERs"></common-table>
+            </div>
+            <div class="item">
+                <div class="item-outline">
+                    <div class="page-title" style="font-size: 14px;"> PEs </div>
+                    <div class="item-part-number" style="color:#A8216E">
+                        <span style="margin-right: 10px;">5</span> 
+                        <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showPEs' ng-click='$ctrl.showPEs=true'>
+                        <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showPEs' ng-click='$ctrl.showPEs=false'>
+                    </div>
+                </div>
+                <common-table table-columns="$ctrl.tableColumns" data="$ctrl.PEs" ng-show="$ctrl.showPEs"></common-table>
+            </div>
+            <div class="item">
+                <div class="item-outline">
+                    <div class="page-title" style="font-size: 14px;"> Inconsistencies </div>
+                    <div class="item-part-number" style="color:#A8216E">
+                        <span style="margin-right: 10px;">6</span> 
+                        <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=true'>
+                        <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=false'>
+                    </div>
+                </div>
+                <common-table table-columns="$ctrl.tableColumnsOfInconsistencies" data="$ctrl.inconsistencies" ng-show="$ctrl.showInconsistencies"></common-table>
+            </div>
+        </div>
+        <div style="align-self: flex-end;" >
+            <button class="button-upload" style="border:none;margin-right: 15px;background: transparent;" ng-click="$ctrl.onCloseDropdown()">Delete</button>
+            <button class="button-upload" ng-click="$ctrl.upload()">Update</button>
+        </div>
+    </div>
+</div>
