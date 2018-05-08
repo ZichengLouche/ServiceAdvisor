@@ -2,7 +2,9 @@
  * Andy 2018.4.9 15:58
  */
 
-const host = 'http://localhost:3000'
+const localServer = 'http://localhost:3000';
+const testServer = 'http://9.110.87.58:3000';
+const host = testServer;
 
 export default {
     httpTimedout: 30000,
