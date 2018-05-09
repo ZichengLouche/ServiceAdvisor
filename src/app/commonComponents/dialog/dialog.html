@@ -1,22 +1,26 @@
-<div class="dialog" style="width:100%;height:100%" data-ng-show="$ctrl.isShown">
-    <!-- data-ng-style="dialogDetail" -->
-    <div class="dialog-container" style="top:20%">
-        <!-- data-ng-style="containerDetail" -->
-        <div class="title">{{$ctrl.title}}</div>
-        <div class="{{$ctrl.hasTextarea ? 'dialog-content' : 'content'}}" data-ng-class="{'warn': $ctrl.warningInfo}">
-            {{$ctrl.content}}
-            <div data-ng-show="$ctrl.hasTextarea" class="mt10">
-                <textarea rows="4" cols="1" data-ng-model="$ctrl.justificationText"></textarea>
+<div class="backdrop df-center-single" ng-show="$ctrl.isShown">
+    <!-- ng-style="dialogDetail" -->
+    <div class="dialog-container" >
+        <img src="/images/close.svg" class="backdrop-close cp" ng-click="$ctrl.onCancel()">
+        <div style="margin-bottom: 37px;height: auto;" class="{{$ctrl.hasTextarea ? 'dialog-content' : 'dialog-body'}}" ng-class="{'warn': $ctrl.warningInfo}" >
+            <div class="dialog-title" ng-show="$ctrl.title">{{$ctrl.title}}</div>
+            <div data-ng-bind-html="$ctrl.content | trust">
+                {{$ctrl.content}}
+                <!-- <input style="width: 100%;" type="text" class="input-border" placeholder="Enter email address" ng-model="$ctrl.email"  id="output" > -->
+            </div>
+
+            <div ng-show="$ctrl.hasTextarea" class="mt10">
+                <textarea rows="4" cols="1" ng-model="$ctrl.justificationText"></textarea>
             </div>
         </div>
-        <div data-ng-show="$ctrl.warningInfo" class="warnInfo">*Please fill in at least 20 characters in the justification area.</div>
+        <div ng-show="$ctrl.warningInfo" class="warnInfo">*Please fill in at least 20 characters in the justification area.</div>
 
-        <div class="foot">
-            <div data-ng-show="!$ctrl.isLoading">
-                <a class="btn white-btn" data-ng-click="$ctrl.onCancel()" data-ng-if="$ctrl.leftBtnName.length > 0">{{$ctrl.leftBtnName}}</a>
-                <a class="btn blue-btn" data-ng-click="$ctrl.onSubmit()" data-ng-if="$ctrl.rightBtnName.length > 0" style="margin-left:5px;">{{$ctrl.rightBtnName}}</a>
+        <div class="dialog-footer">
+            <div ng-show="!$ctrl.isLoading">
+                <button class="button-upload" style="width: 81px;background: transparent;border:none;margin-right: 15px;" ng-click="$ctrl.onCancel()">{{$ctrl.leftBtnName}}</button>
+                <button class="button-upload" style="width: 81px;background: transparent;" ng-click="$ctrl.onSubmit()">{{$ctrl.rightBtnName}}</button>
             </div>
-            <img data-ng-show="$ctrl.isLoading" class="loader" data-ng-src="image/loading/loading.svg" />
+            <img ng-show="$ctrl.isLoading" class="loader" ng-src="/images/loading/loader-45.gif" />
         </div>
     </div>
 </div>

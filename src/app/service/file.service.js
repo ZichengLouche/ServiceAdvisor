@@ -6,7 +6,7 @@ class FileService {
     [this.httpClient] = [httpClient];
   }
 
-  getFileList(userId){
+  getFileList(){
     return this.httpClient.ibmGet(Config.WebServiceMapping.node.fileList);
   }
   

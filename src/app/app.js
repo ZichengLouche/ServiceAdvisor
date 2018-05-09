@@ -7,6 +7,7 @@ import directives from './directives';
 import services from './service'
 import appRouter from './config/app.router';
 import interceptor from './config/interceptor.js';
+import filters from './config/filters.js';
 
 // import '../style/app.css';
 import '../style/main.less';
@@ -22,14 +23,15 @@ let appComponent = {
     controllerAs: 'app'
 };
 
-var app = angular.module('myApp', [uiRouter, commonComponents, components, directives, services,]);
 
+var app = angular.module('myApp', [uiRouter, commonComponents, components, directives, services, filters]);
 export default app.config(appRouter).config(interceptor)
                   .component('app', appComponent)
                   .name;
 
                   
 app.run(['$rootScope', '$log', '$state', '$window', function ($rootScope, $log, $state, $window) {
+    console.log($window);
     // $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
     //     // add one URL to deal with the SSO page
     //     $(window).scrollTop(0);

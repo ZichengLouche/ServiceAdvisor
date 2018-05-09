@@ -20,7 +20,6 @@ export default class HeadbarDirective {
     }
 
     link (scope) {
-        // 这段代码太别扭了，但问题是如果搬到controller里面去写成setter，会在constructor之前执行，真头疼，先这样吧
         scope.$watch('calendarCtrl.selectedDate', newDate => {
             if (newDate) {
                 scope.calendarCtrl.calendar.year = newDate.getFullYear();

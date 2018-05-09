@@ -1,8 +1,8 @@
 export default class ReportDetailController {
 	// common attrs Andy 2018.4.23 17:53
     // static $inject = ['http'];
-    constructor($rootScope, $state) {
-        [this.$rootScope, this.menu, this.name] = [$rootScope, $state.current.menu, 'home'];
+    constructor($rootScope, $scope, $state, $compile) {
+        [this.$rootScope, this.$scope, this.$compile, this.name] = [$rootScope, $scope, $compile, 'ReportDetailController'];
         this.reportList = [[{'name':'Subsystem A'}, {'name':'Subsystem B'}, {'name':'Subsystem B'}],[{'name':'Subsystem A'}, {'name':'Subsystem B'}, {'name':'Subsystem B'}]];
     }
 
@@ -28,8 +28,70 @@ export default class ReportDetailController {
                               {'module':'DSNGDBIX','ptf-inc':'UI32815','ptf-exp':'UI21659', 'ptf-evi':'UI21659','test':'t'},
                              ]; 
     }
+
+    delete(item) {
+        console.log(item);
+        this.$rootScope.$broadcast('DIALOG', {
+            title: 'Are you sure to delete this report?',
+            content: '',
+            leftBtnName: 'Cancel',
+            rightBtnName: 'Delete',
+            submitAction: () => {
+                var defer = this.$q.defer();
+                // WishlistService.addWishItem(LoginService.getCurrentProfileId(), productId).then(function (data) {
+                //     $log.debug(data.status);
+                //     if (data.status === "Success") {
+                //         $rootScope.$broadcast('ALERT', {
+                //             message: 'Add to wish list successfully',
+                //             success: true
+                //         });
+                //         defer.resolve();
+                //     } else {
+                //         defer.reject();
+                //     }
+                // }, function (err) {
+                //     $log.error(err);
+                //     defer.reject();
+                // });
+                return defer.promise;
+            }
+        });
+    }
+
+    send(item) {
+        console.log(item);
+        let originContent = '<input style="width: 100%;" type="text" class="input-border" placeholder="Enter email address" ng-model="$ctrl.email" ng-click="alert(1)" id="output" >';
+        let compiledContent = this.$compile(originContent)(this.$scope);
+        // angular.element('.operationPrompt').append(compiledContent);
+
+        this.$rootScope.$broadcast('DIALOG', {
+            title: 'Send report to',
+            content: compiledContent.toString(),
+            leftBtnName: 'Cancel',
+            rightBtnName: 'Delete',
+            submitAction: () => {
+                var defer = this.$q.defer();
+                // WishlistService.addWishItem(LoginService.getCurrentProfileId(), productId).then(function (data) {
+                //     $log.debug(data.status);
+                //     if (data.status === "Success") {
+                //         $rootScope.$broadcast('ALERT', {
+                //             message: 'Add to wish list successfully',
+                //             success: true
+                //         });
+                //         defer.resolve();
+                //     } else {
+                //         defer.reject();
+                //     }
+                // }, function (err) {
+                //     $log.error(err);
+                //     defer.reject();
+                // });
+                return defer.promise;
+            }
+        });
+    }
 }
 
-ReportDetailController.$inject = ['$rootScope', '$state'];
+ReportDetailController.$inject = ['$rootScope', '$scope', '$state', '$compile'];
 
 

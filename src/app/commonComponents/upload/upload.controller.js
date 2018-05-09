@@ -17,7 +17,7 @@ export default class UploadController {
             this.isShown = args.isShown;
         });
 
-        this.onCloseDropdown = () => {
+        this.onCancel = () => {
             this.isShown = !this.isShown;
         }
 
@@ -54,7 +54,7 @@ export default class UploadController {
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
         this.fileService.upload(this.formData).then((data) => {
             console.log(data);
-            this.onCloseDropdown();
+            this.onCancel();
             this.$state.go('main.selectFiles');
 
         }).finally(() => {

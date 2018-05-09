@@ -34,7 +34,6 @@ export default class DialogController {
         }, (error) => {
             this.isLoading = false;
             this.warningInfo = this.hasTextarea ? true : false;
-            this.isShown = true;
             console.log(error);
         });
     }

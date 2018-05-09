@@ -22,9 +22,10 @@ export default class SelectFilesController {
     }
 
     delete(item) {
+        console.log(item);
         this.$rootScope.$broadcast('DIALOG', {
-            title: 'Confirmation',
-            content: 'Are you sure to delete the fille?',
+            title: 'Are you sure to delete the fille?',
+            content: '',
             leftBtnName: 'Cancel',
             rightBtnName: 'Delete',
             submitAction: () => {

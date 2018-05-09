@@ -1,31 +1,70 @@
 /***************************************************Andy 2018.5.3 10:23 Dialog */
+.dialog-container {
+    border-top: 5px solid #A8216E;
+    width: 500px;
+    /* height: 335px; */
+    background: #ffffff;
+    position: relative;
+  }
+  
+  .dialog-container .backdrop-close {
+    position: absolute; 
+    top: 20px; 
+    right: 20px; 
+    width: 10px;
+  }
+  .dialog-title {
+    font-family: HelvNeue Light for IBM;
+    font-size: 26px;
+    margin-bottom: 18px;
+  }
+  .dialog-body {
+    background: #FFFFFF;
+    padding: 63px 30px 0px 48px;
+    height: 255px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dialog-footer {
+      display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: #F0F3F6;
+    height: 88px;
+    padding-right: 30px;
+  }
+
+
+
+
+
+
 .dialog {
     position: fixed;
     top: 0;
     left: 0;
+    width:100%;
+    height:100%;
     background: rgba(0, 0, 0, 0.3);
     z-index: 3000;
     text-align: center;
 }
-.dialog a:hover {
-	text-decoration: none;
-}
+
 .dialog>.dialog-container {
-    display: inline-block;
     background: #ffffff;
     box-shadow: 0px 8px 24px 0px rgba(128, 128, 128, 0.10);
-    width: 600px;
-    height: auto;
-    position: relative;
+    width: 500px;
+    height: 335px;
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    margin: auto;
 }
-.dialog>.dialog-container>.title {
-    text-align: left;
-    font-family: ibm-font-bold;
-    font-size: 16px;
-    color: #333;
-    padding: 16px;
-    border-bottom: solid 1px #f1f1f1;
-}
+
 .dialog>.dialog-container>.content {
     font-family: ibm-font-regular;
     font-size: 14px;

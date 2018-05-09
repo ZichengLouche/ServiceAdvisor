@@ -5,7 +5,7 @@
 
     <div class="" style="display: flex; flex-direction: column;">
         <div style="align-self: flex-end;">
-            <button class="button-upload" ng-click="$ctrl.showUpload()">Send</button>
+            <button class="button-upload" ng-click="$ctrl.send($ctrl.report)">Send</button>
         </div>
         <div style="margin:65px 0px 45px 0px;">
             <div class="item pr">
@@ -50,8 +50,8 @@
             </div>
         </div>
         <div style="align-self: flex-end;" >
-            <button class="button-upload" style="border:none;margin-right: 15px;background: transparent;" ng-click="$ctrl.onCloseDropdown()">Delete</button>
-            <button class="button-upload" ng-click="$ctrl.upload()">Update</button>
+            <button class="button-upload" style="border:none;margin-right: 15px;background: transparent;" ng-click="$ctrl.delete($ctrl.report)">Delete</button>
+            <button class="button-upload" ng-click='$ctrl.delete($ctrl.report)'>Update</button>
         </div>
     </div>
 </div>
