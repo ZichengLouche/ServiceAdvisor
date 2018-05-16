@@ -13,6 +13,7 @@ export default class HeadbarDirective {
 
         this.scope = {
             routerType: '@',
+            switchTabState: '&'
         };
     }
 
