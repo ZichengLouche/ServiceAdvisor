@@ -15,7 +15,7 @@ export default class MessagebarAlertController {
       // remove the alert after 3 seconds
       this.$timeout(() => {
         this.$scope.info.isShow = false;
-      }, 3000);
+      }, 5000);
     });
   }
 

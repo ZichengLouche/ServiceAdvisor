@@ -64,7 +64,8 @@ module.exports = function makeWebpackConfig(options) {
 
       // Output path from the view of the page
       // Uses webpack-dev-server in development
-      publicPath: BUILD ? '/' : 'http://localhost:8080/',
+      // publicPath: BUILD ? '/' : 'http://localhost:8080/',
+      publicPath: '/',
 
       // Filename for entry points, Only adds hash in build mode
       filename: BUILD ? '[name].[hash].js' : '[name].bundle.js',
@@ -250,11 +251,21 @@ module.exports = function makeWebpackConfig(options) {
   }
 
   // Add build specific plugins
-  if (BUILD) {
-    config.plugins.push(
-      //http://npm.taobao.org/package/clean-webpack-plugin
-      new CleanWebpackPlugin(['dist']),
+  config.plugins.push(
+    //http://npm.taobao.org/package/clean-webpack-plugin
+    new CleanWebpackPlugin(['dist']),
 
+    // Copy assets from the public folder
+    // Reference: https://github.com/kevlened/copy-webpack-plugin
+    new CopyWebpackPlugin([{
+      from: __dirname + '/src/public',
+      to: __dirname + '/dist',
+    }])
+  )
+
+  if (TEST) {
+    config.plugins.push(
+      
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
       // Only emit files when there are no errors
       new webpack.NoErrorsPlugin(),
@@ -266,13 +277,7 @@ module.exports = function makeWebpackConfig(options) {
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
       new webpack.optimize.UglifyJsPlugin(),
-
-      // Copy assets from the public folder
-      // Reference: https://github.com/kevlened/copy-webpack-plugin
-      new CopyWebpackPlugin([{
-        from: __dirname + '/src/public',
-        to: __dirname + '/dist',
-      }])
+      
     )
   }
 

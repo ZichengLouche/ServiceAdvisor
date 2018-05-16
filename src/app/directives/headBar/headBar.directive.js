@@ -8,14 +8,11 @@ export default class HeadbarDirective {
         this.restrict = 'EA';
 
         // this.controller = HeadBarController;
-        // this.controllerAs = 'calendarCtrl';
+        this.controllerAs = '$ctrl';
         this.bindToController = true;
 
         this.scope = {
-            minDate: '=',
-            maxDate: '=',
-            selectedDate: '=',
-            dateClick: '&'
+            routerType: '@',
         };
     }
 
