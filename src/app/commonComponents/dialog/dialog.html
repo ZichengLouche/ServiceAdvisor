@@ -4,8 +4,7 @@
         <img src="/images/close.svg" class="backdrop-close cp" ng-click="$ctrl.onCancel()">
         <div style="margin-bottom: 37px;height: auto;" class="{{$ctrl.hasTextarea ? 'dialog-content' : 'dialog-body'}}" ng-class="{'warn': $ctrl.warningInfo}" >
             <div class="dialog-title" ng-show="$ctrl.title">{{$ctrl.title}}</div>
-            <div data-ng-bind-html="$ctrl.content | trust">
-                {{$ctrl.content}}
+            <div data-ng-bind-html1="$ctrl.content | trust" class="operationPrompt">
                 <!-- <input style="width: 100%;" type="text" class="input-border" placeholder="Enter email address" ng-model="$ctrl.email"  id="output" > -->
             </div>
 
