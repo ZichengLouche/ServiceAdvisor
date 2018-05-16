@@ -19,6 +19,11 @@ export default class UploadController {
 
         this.onCancel = () => {
             this.isShown = !this.isShown;
+            this.meplFiles = null;
+            this.meplFilesNames = null;
+            this.pmrNumber = null;
+            this.validationMessage = null;
+            this.formData = null;
         }
 
         this.upload = this.upload;
@@ -43,13 +48,26 @@ export default class UploadController {
             this.meplFilesArray.push(item);
             this.formData.append('meplFiles', item);
         }
+        
+        this.validate();
+        
         this.$scope.$apply();
     }
-    upload() {
-        if(!this.formData) {
-            alert('please select MEPL file or input PMR number!');
-            return ;
+    validate() {
+        if(!this.formData || this.meplFiles.length < 1 && !this.pmrNumber) {
+            this.validationMessage = '*please select MEPL file or input PMR number!';
+
+        } else if(this.pmrNumber && !this.pmrNumber.match(/^\d{5},\d{3},\d{3}$/g)) {
+            this.validationMessage = '*PMR number is invalid!';
+
+        } else {
+            this.validationMessage = '';
         }
+
+        return this.validationMessage;
+    }
+    upload() {
+        if(this.validate()) return ;
 
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
         this.fileService.upload(this.formData).then((data) => {

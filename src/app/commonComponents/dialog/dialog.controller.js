@@ -16,6 +16,15 @@ export default class DialogController {
             // textarea UI
             this.justificationText = '';
             this.hasTextarea = args.hasTextarea || false;
+
+            if(typeof this.content == 'object') {
+                // angular.element(document).find('.dialog-container .operationPrompt').append(this.content);
+                document.querySelector('.dialog-container .operationPrompt').innerHTML = '';
+                document.querySelector('.dialog-container .operationPrompt').appendChild(this.content[0]);
+                // this.content = 'null';
+            } else {
+                document.querySelector('.dialog-container .operationPrompt').textContent = this.content;
+            }
         });
 
     }

@@ -35,6 +35,12 @@
     padding-right: 30px;
   }
 
+  .dialog-container .warnInfo {
+    color: #FF5C49;
+}
+.dialog-container .warn textarea{
+    border-color: #FF5C49;
+}
 
 
 
@@ -91,15 +97,4 @@
 }
 .dialog>.dialog-container>.foot>.loader {
 	height: 34px;
-}
-.dialog>.dialog-container>.warnInfo {
-    color: #FF5C49;
-    font-family: ibm-font-regular;
-    font-size: 14px;
-    text-align: left;
-    padding-left: 20px;
-    padding-bottom: 6px;
-}
-.dialog>.dialog-container>.warn textarea{
-    border-color: #FF5C49;
 }

@@ -12,14 +12,14 @@
                        class="dn" style="width:100px;" ng-change="$ctrl.doCheck()" onchange="angular.element(this).scope().$ctrl.fileToUpload(this)" ng-click="$ctrl.doCheck()">
             </div>
             
-            <input style="flex:1;" type="text" placeholder="Or provide a PMR Number" data-ng-model="$ctrl.pmrNumber"  id="output" 
-                   class="input-border" ng-class="{'filter-gc':$ctrl.meplFiles.length}" ng-disabled="$ctrl.meplFiles.length" >
+            <input style="flex:1; border-bottom-color: #A8216E;" type="text" placeholder="Or provide a PMR Number(eg: 12345,678,789)" data-ng-model="$ctrl.pmrNumber"  
+                   class="input-border" ng-class="{'filter-gc':$ctrl.meplFiles.length}" ng-disabled="$ctrl.meplFiles.length" ng-change="$ctrl.validate()" >
             <!--    <i ng-show="form.candidates.$error.required && !form.candidates.$error.maxSize && !form.candidates.$error.pattern">required</i>
              
             <input type="file" id="t" multiple> -->
 
-            <div style="flex:1;">
-                <i ng-show="form.candidates.$error.maxSize">File too large, max 200M</i>
+            <div style="flex:1;" class="df-center-vertical">
+                <div class="warnInfo" ng-bind-html="$ctrl.validationMessage | trust">File too large, max 200M</div>
                 <i ng-show="form.candidates.$error.pattern">csv filetype only</i>
             </div>                       
         </div>

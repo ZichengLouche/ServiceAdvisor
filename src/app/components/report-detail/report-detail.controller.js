@@ -58,15 +58,19 @@ export default class ReportDetailController {
         });
     }
 
+    test(obj) {
+        console.log('email input changed:' + this.email + '; obj:', obj);
+    }
+
     send(item) {
         console.log(item);
-        let originContent = '<input style="width: 100%;" type="text" class="input-border" placeholder="Enter email address" ng-model="$ctrl.email" ng-click="alert(1)" id="output" >';
+        let originContent = '<input style="width: 100%;" type="text" class="input-border" placeholder="Enter email address" ng-model="$ctrl.email" ng-change="$ctrl.test(this)" id="output" >';
         let compiledContent = this.$compile(originContent)(this.$scope);
         // angular.element('.operationPrompt').append(compiledContent);
 
         this.$rootScope.$broadcast('DIALOG', {
             title: 'Send report to',
-            content: compiledContent.toString(),
+            content: compiledContent,
             leftBtnName: 'Cancel',
             rightBtnName: 'Delete',
             submitAction: () => {
