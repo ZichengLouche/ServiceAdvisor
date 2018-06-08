@@ -12,8 +12,11 @@ export default {
     WebServiceMapping: {
         node: {
             login: host + '/api/users/login',
-            upload: host + '/api/assets/v1/upload?access_token=xxx&zadmin=123',
-            fileList: host + '/api/assets/v1/list?access_token=xxx&zadmin=123',
+            uploadLocalFile: host + '/api/assets/v1/upload?access_token=xxx&zadmin=123',
+            checkMeplByPmr: host + '/api/mepls/v1/checkMeplByPmr?access_token=xxx&zadmin=123',
+            getMepls: host + '/api/mepls/v1/getMepls?access_token=xxx&zadmin=123',
+            uploadMeplByPmr: host + '/api/mepls/v1/uploadMeplByPmr?access_token=xxx&zadmin=123',
+            getUserInfo: host + '/api/accounts/v1/get?access_token=xxx&zadmin=123',
         }
     }
 }

@@ -23,7 +23,7 @@ export default class DialogController {
                 document.querySelector('.dialog-container .operationPrompt').appendChild(this.content[0]);
                 // this.content = 'null';
             } else {
-                document.querySelector('.dialog-container .operationPrompt').textContent = this.content;
+                document.querySelector('.dialog-container .operationPrompt').innerHTML = this.content;
             }
         });
 

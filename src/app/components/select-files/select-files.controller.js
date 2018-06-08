@@ -9,8 +9,8 @@ export default class SelectFilesController {
 
     $onInit() {
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
-        this.fileService.getFileList().then((res) => {
-            this.fileList = res.data.datas;
+        this.fileService.getFileList().then((data) => {
+            this.fileList = data.mepls;
 
         }).finally(() => {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: false });

@@ -55,7 +55,7 @@ class HttpClient {
     return this.commonRequest('IBM', 'GET', url, params);
   }
   ibmPost(url, params) {
-    return this.commonRequest('IBM', 'POST', 'api/' + url, params);
+    return this.commonRequest('IBM', 'POST', url, params);
   }
   ibmPostFormData(url, params) {
     return this.commonRequest('IBM', 'POST', url, params, 'multipart/form-data');
