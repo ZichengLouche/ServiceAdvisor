@@ -31,19 +31,20 @@ export default class DialogController {
 
     onCancel() {
         this.isShown = false;
-        this.warningInfo = false;
+        this.warningInfo = '';
     }
 
     onSubmit() {
         this.isLoading = true;
-        this.submitAction(this.hasTextarea ? this.justificationText : null).then(() => {
-            this.warningInfo = this.hasTextarea ? false : false;
-            this.isShown = false;
+        this.submitAction(this.hasTextarea ? this.justificationText : null).then((data) => {
+            this.warningInfo = '';
+            this.isShown = data ? data.isKeepShown : false;
             this.isLoading = false;
+
         }, (error) => {
             this.isLoading = false;
-            this.warningInfo = this.hasTextarea ? true : false;
-            console.log(error);
+            this.warningInfo = typeof error == 'object' ? '' : error;
+            this.$scope.$apply();
         });
     }
 }

@@ -17,6 +17,9 @@ export default {
             getMepls: host + '/api/mepls/v1/getMepls?access_token=xxx&zadmin=123',
             uploadMeplByPmr: host + '/api/mepls/v1/uploadMeplByPmr?access_token=xxx&zadmin=123',
             getUserInfo: host + '/api/accounts/v1/get?access_token=xxx&zadmin=123',
+            
+            sendVerifyCode: host + '/api/Emails/v1/send_verify_code?access_token=xxx&zadmin=123',
+            updateUserInfo: host + '/api/accounts/v1/update?access_token=xxx&zadmin=123',
         }
     }
 }

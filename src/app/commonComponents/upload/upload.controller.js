@@ -5,8 +5,9 @@
 export default class UploadController {
     // common attrs Andy 2018.3.2 17:17
     // static $inject = ['http'];
-    constructor($rootScope, $scope, $state, fileService, userService) {
-        [this.$rootScope, this.$scope, this.$state, this.fileService, this.userService, this.name] = [$rootScope, $scope, $state, fileService, userService, 'UploadController'];
+    constructor($rootScope, $scope, $state, $compile, fileService, userService) {
+        [this.$rootScope, this.$scope, this.$state, this.$compile] = [$rootScope, $scope, $state, $compile];
+        [this.fileService, this.userService, this.name] = [fileService, userService, 'UploadController'];
     }
 
     $onInit() {
@@ -85,93 +86,130 @@ export default class UploadController {
             let userInfo = JSON.parse(localStorage.getItem('userInfo'));
             if (!userInfo || !userInfo.companyEmail || !userInfo.customerId) {
                 this.userService.getUserInfo().then((data) => {
-                    if (data.companyEmail && data.customerId) {
+                    if (!data.companyEmail && data.customerId) {
                         localStorage.setItem('userInfo', JSON.stringify(data));
+                        this.uploadMeplByPmr();
 
                     } else {
-                        let originContent = '<input style="width: 100%;" type="text" class="input-border" placeholder="Enter email address" ng-model="$ctrl.email" ng-change="$ctrl.test(this)" id="output" >';
+                        let originContent = `<div style="line-height: 46px;">
+                                                <input style="width: 100%;border-bottom-color: #A8216E;" type="text" class="input-border" placeholder="Enter customerId" ng-model="$ctrl.customerId" ng-change="$ctrl.test(this)" required id="customerId" >
+                                                <input style="width: 100%;border-bottom-color: #A8216E;" type="email" class="input-border" placeholder="Enter companyEmail" ng-model="$ctrl.companyEmail" ng-change="$ctrl.test(this)" required id="companyEmail" >
+                                             </div>`;
                         let compiledContent = this.$compile(originContent)(this.$scope);
-    
+
                         this.$rootScope.$broadcast('DIALOG', {
-                            title: 'First time to fill in ',
+                            title: 'Only first time to fill in ',
                             content: compiledContent,
                             leftBtnName: 'Cancel',
                             rightBtnName: 'Done',
                             submitAction: () => {
-                                var defer = this.$q.defer();
-                                // WishlistService.addWishItem(LoginService.getCurrentProfileId(), productId).then(function (data) {
-                                //     $log.debug(data.status);
-                                //     if (data.status === "Success") {
-                                //         $rootScope.$broadcast('ALERT', {
-                                //             message: 'Add to wish list successfully',
-                                //             success: true
-                                //         });
-                                //         defer.resolve();
-                                //     } else {
-                                //         defer.reject();
-                                //     }
-                                // }, function (err) {
-                                //     $log.error(err);
-                                //     defer.reject();
-                                // });
-                                return defer.promise;
+                                if (!document.querySelector('#customerId').checkValidity()) {
+                                    return new Promise(function (resolve, reject) {
+                                        reject('<span style="line-height: 46px;">*Please fill in customerId!</span>');
+                                    });
+
+                                } else if(!document.querySelector('#companyEmail').checkValidity()) {
+                                    if(document.querySelector('#companyEmail').validity.typeMismatch) {
+                                        return Promise.reject('<span style="line-height: 46px;">*Company email format is invalid!</span>');
+
+                                    } else {
+                                        return Promise.reject('<span style="line-height: 46px;">*Please fill in companyEmail!</span>');
+                                    }
+                                }
+
+                                return this.userService.sendVerifyCode(this.customerId, this.companyEmail).then((data) => {
+                                    console.log('#' + data.codes + '#');
+                                    let originContent = `<div style="line-height: 46px;height: 100px;">
+                                                            <input style="width: 100%;border-bottom-color: #A8216E;" type="text" class="input-border" placeholder="Enter verification Code" ng-model="$ctrl.verificationCode" ng-change="$ctrl.test(this)" id="verificationCode" >
+                                                         </div>`;
+                                    let compiledContent = this.$compile(originContent)(this.$scope);
+
+                                    this.$rootScope.$broadcast('DIALOG', {
+                                        title: 'Verification Code',
+                                        content: compiledContent,
+                                        leftBtnName: 'Cancel',
+                                        rightBtnName: 'Done',
+                                        submitAction: () => {
+                                            if(!this.verificationCode) return Promise.reject('<span style="position: relative;top: -30px;">*Please fill in verificationCode!</span>');
+
+                                            return this.userService.updateUserInfo(this.customerId, this.companyEmail, this.verificationCode).then((data) => {
+                                                this.$rootScope.$broadcast('ALERT', {
+                                                    message: 'update user info successfully',
+                                                    success: true
+                                                });
+
+                                                this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
+                                                this.uploadMeplByPmr();
+                                            })
+                                        }
+                                    });
+
+                                    return {'success': true, 'isKeepShown': true};
+                                })
                             }
                         });
-    
-                        return ;
-                    }
-                })
-            }    
 
-            this.fileService.checkMeplByPmr(this.pmrNumber).then((data) => {
-                if (!data.message.mepl.fileNames || data.message.mepl.fileNames.length == 0) {
-                    this.validationMessage = '*The files of this PMR do not exist!';
-                    this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
-                    return ;
-                }
-
-                this.fileService.getFileList().then((data) => {
-                    let hasMeplFile = data.mepls.some((meplFile) => meplFile.FILENAME.indexOf(this.pmrNumber) != -1);
-                    if(!hasMeplFile) {
-                        this.$rootScope.$broadcast('DIALOG', {
-                            title: 'The files of this PMR have already uploaded, are you sure to override?',
-                            content: '<div style="height: 63px;"></div>',
-                            leftBtnName: 'Cancel',
-                            rightBtnName: 'Sure',
-                            submitAction: () => {
-                                this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
-                                return this.fileService.uploadMeplByPmr(this.pmrNumber).then((data) => {
-                                    console.log(data);
-                                    this.onCancel();
-                                    this.$state.go('main.selectFiles');
-                                }).finally(() => {
-                                    this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
-                                });
-                            }
-                        });
-                        
                         this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
-                        return ;
-    
-                    } else {
-                        this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
-                        this.fileService.uploadMeplByPmr(this.pmrNumber).then((data) => {
-                            console.log(data);
-                            this.onCancel();
-                            this.$state.go('main.selectFiles');
-                        }).finally(() => {
-                            this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
-                        });
+                        return;
                     }
+
                 }).catch(() => {
                     this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
                 });
 
-            }).catch(() => {
-                this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
-            })
+            } else {
+                this.uploadMeplByPmr();
+            }
+
 
         }
+    }
+
+    uploadMeplByPmr() {
+        // uploadMeplByPmr
+        this.fileService.checkMeplByPmr(this.pmrNumber).then((data) => {
+            if (!data.message.mepl.fileNames || data.message.mepl.fileNames.length == 0) {
+                this.validationMessage = '*The files of this PMR do not exist!';
+                this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
+                return;
+            }
+
+            this.fileService.getFileList().then((data) => {
+                let hasMeplFile = data.mepls.some((meplFile) => meplFile.FILENAME.indexOf(this.pmrNumber) != -1);
+                if (hasMeplFile) {
+                    this.$rootScope.$broadcast('DIALOG', {
+                        title: 'The files of this PMR have already uploaded, are you sure to override?',
+                        content: '<div style="height: 63px;"></div>',
+                        leftBtnName: 'Cancel',
+                        rightBtnName: 'Sure',
+                        submitAction: () => {
+                            return this.fileService.uploadMeplByPmr(this.pmrNumber).then((data) => {
+                                console.log(data);
+                                this.onCancel();
+                                this.$state.go('main.selectFiles');
+                            })
+                        }
+                    });
+
+                    this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
+                    return;
+
+                } else {
+                    this.fileService.uploadMeplByPmr(this.pmrNumber).then((data) => {
+                        console.log(data);
+                        this.onCancel();
+                        this.$state.go('main.selectFiles');
+                    }).finally(() => {
+                        this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
+                    });
+                }
+            }).catch(() => {
+                this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
+            });
+
+        }).catch(() => {
+            this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
+        })
     }
 
     $onDestroy() {
@@ -179,6 +217,6 @@ export default class UploadController {
     }
 }
 
-UploadController.$inject = ['$rootScope', '$scope', '$state', 'fileService', 'userService'];
+UploadController.$inject = ['$rootScope', '$scope', '$state', '$compile', 'fileService', 'userService',];
 
 

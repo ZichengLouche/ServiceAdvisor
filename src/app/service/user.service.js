@@ -10,6 +10,13 @@ class UserService {
   getUserInfo(){
     return this.httpClient.ibmGet(Config.WebServiceMapping.node.getUserInfo);
   }
+
+  sendVerifyCode(customerId, companyEmail){
+    return this.httpClient.ibmPost(Config.WebServiceMapping.node.sendVerifyCode, {'customerId': customerId, 'toEmail':companyEmail});
+  }
+  updateUserInfo(customerId, companyEmail, codes){
+    return this.httpClient.ibmPost(Config.WebServiceMapping.node.updateUserInfo, {'customerId': customerId, 'companyEmail':companyEmail, 'codes': codes});
+  }
   
 }
 

@@ -1,8 +1,8 @@
 <div class="backdrop df-center-single" ng-show="$ctrl.isShown" style="z-index: 301;">
     <!-- ng-style="dialogDetail" -->
     <div class="dialog-container" >
-        <img src="/images/close.svg" class="backdrop-close cp" ng-click="$ctrl.onCancel()">
         <div style="margin-bottom: 37px;height: auto;" class="{{$ctrl.hasTextarea ? 'dialog-content' : 'dialog-body'}}" ng-class="{'warn': $ctrl.warningInfo}" >
+            <img src="/images/close.svg" class="backdrop-close cp" ng-click="$ctrl.onCancel()">
             <div class="dialog-title" ng-show="$ctrl.title">{{$ctrl.title}}</div>
             <div data-ng-bind-html1="$ctrl.content | trust" class="operationPrompt">
                 <!-- <input style="width: 100%;" type="text" class="input-border" placeholder="Enter email address" ng-model="$ctrl.email"  id="output" > -->
@@ -11,8 +11,8 @@
             <div ng-show="$ctrl.hasTextarea" class="mt10">
                 <textarea rows="4" cols="1" ng-model="$ctrl.justificationText"></textarea>
             </div>
+            <div class="warnInfo" ng-bind-html="$ctrl.warningInfo | trust">*Please fill in at least 20 characters in the justification area.</div>
         </div>
-        <div ng-show="$ctrl.warningInfo" class="warnInfo">*Please fill in at least 20 characters in the justification area.</div>
 
         <div class="dialog-footer">
             <div ng-show="!$ctrl.isLoading">
