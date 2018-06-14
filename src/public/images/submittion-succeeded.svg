@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.1 (29687) - http://www.bohemiancoding.com/sketch -->
+    <title>submittion-succeeded</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8.5,17 C13.1944204,17 17,13.1944204 17,8.5 C17,3.80557963 13.1944204,0 8.5,0 C3.80557963,0 0,3.80557963 0,8.5 C0,13.1944204 3.80557963,17 8.5,17 Z" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="17" height="17" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="submittion-succeeded">
+            <g id="positive">
+                <g id="Group-8-Copy">
+                    <use id="Oval-25" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                    <path d="M5.3890873,5.8890873 L6.3890873,5.8890873 L6.3890873,9.8890873 L5.3890873,9.8890873 L5.3890873,5.8890873 Z M6.3890873,8.8890873 L12.3890873,8.8890873 L12.3890873,9.8890873 L6.3890873,9.8890873 L6.3890873,8.8890873 Z" id="Combined-Shape" fill="#FFFFFF" transform="translate(8.889087, 7.889087) rotate(-45.000000) translate(-8.889087, -7.889087) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

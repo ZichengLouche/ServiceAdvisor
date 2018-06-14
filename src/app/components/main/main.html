@@ -3,7 +3,6 @@
   <!-- Add error message bar here -->
   
   <div class="content-body {{isMenuOpen ? 'layout-menu-open1' : 'layout-menu-closed'}}">
-  	<messagebar-alert></messagebar-alert>
   	<div class="content-page">
   		<div mask></div>
   		<div ui-view class="page"></div>
@@ -11,6 +10,7 @@
   </div>
 </div>
 
+<messagebar-alert></messagebar-alert>
 <common-dialog></common-dialog>
 <backdrop></backdrop>
 <upload ></upload>
