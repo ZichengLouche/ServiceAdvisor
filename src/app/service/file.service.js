@@ -16,6 +16,10 @@ class FileService {
     return this.httpClient.ibmGet(Config.WebServiceMapping.node.getMepls, {'userId': this.userId});
   }
 
+  updateMeplComment(meplId, comment) {
+    return this.httpClient.ibmPost(Config.WebServiceMapping.node.updateMeplComment, {'userId': this.userId, 'meplId':meplId, 'comment':comment});
+  }
+
   uploadMeplByPmr(pmr) {
     return this.httpClient.ibmPost(Config.WebServiceMapping.node.uploadMeplByPmr, {'userId': this.userId, 'pmr':pmr});
   }
