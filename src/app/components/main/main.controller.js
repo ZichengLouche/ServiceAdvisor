@@ -24,7 +24,13 @@ export default class MainController {
         this.routerType = this.$state.current.routerType;
         // select menu action Andy 2018.5.16 15:23
         this.switchTabState = (routeState) => {
-            if (this.$state.current.name == 'main.home') return;
+            if (this.$state.current.name == 'main.home') {
+                this.$rootScope.$broadcast('ALERT', {
+                    message: 'Please upload MEPL files first!',
+                    isWarning: true,
+                });
+                return;
+            }
             this.$state.go(routeState);
         }
     }

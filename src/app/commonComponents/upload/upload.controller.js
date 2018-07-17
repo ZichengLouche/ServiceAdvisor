@@ -86,7 +86,7 @@ export default class UploadController {
             let userInfo = JSON.parse(localStorage.getItem('userInfo'));
             if (!userInfo || !userInfo.companyEmail || !userInfo.customerId) {
                 this.userService.getUserInfo().then((data) => {
-                    if (!data.companyEmail && data.customerId) {
+                    if (data.companyEmail && data.customerId) {
                         localStorage.setItem('userInfo', JSON.stringify(data));
                         this.uploadMeplByPmr();
 
@@ -160,8 +160,6 @@ export default class UploadController {
             } else {
                 this.uploadMeplByPmr();
             }
-
-
         }
     }
 

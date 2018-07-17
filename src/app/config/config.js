@@ -4,7 +4,7 @@
 
 // const localServer = 'http://localhost:3000';
 // const testServer = 'http://9.110.87.58:3000';
-const prodServer = 'https://zadvisort1.mybluemix.net';
+const prodServer = 'https://zadvisort.mybluemix.net';
 const host = prodServer;
 
 export default {
