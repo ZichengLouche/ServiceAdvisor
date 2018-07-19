@@ -2,10 +2,11 @@
     <div class="container">
         <h1>Welcome</h1>
 
-        <form class="form" ng-show="!ctrl.showlogin">
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button type="submit" id="login-button" ng-click="ctrl.login()">Login</button>
+        <form class="form">
+            <input type="text" placeholder="Username" ng-model="$ctrl.userName">
+            <input type="password" placeholder="Password" ng-model="$ctrl.userPassword">
+            <div class="warnInfo" ng-bind-html="$ctrl.validationMessage | trust"></div>
+            <button type="submit" id="login-button" ng-click="$ctrl.login()">Login</button>
         </form>
     </div>
 

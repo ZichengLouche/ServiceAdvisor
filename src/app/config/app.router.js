@@ -2,7 +2,7 @@ routing.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
 
 export default function routing($stateProvider, $locationProvider, $urlRouterProvider) {
     // $locationProvider.html5Mode(true);
-    $locationProvider.html5Mode({enabled:true,requireBase:false});
+    $locationProvider.html5Mode({enabled:false,requireBase:false});
     $urlRouterProvider.otherwise('/login');
     $stateProvider
         .state('login', {
