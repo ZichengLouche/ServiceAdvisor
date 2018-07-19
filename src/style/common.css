@@ -92,3 +92,7 @@ ol, ul {
 	align-items: center;
   	height: 45px;
 }
+
+.warnInfo {
+    color: #FF5C49;
+}
