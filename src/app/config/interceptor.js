@@ -4,7 +4,12 @@ export default function interceptor($httpProvider) {
     function ($q, $rootScope) {
       return {
         'request': function (req) {
-          //                req.timeout = 10;
+          // req.timeout = 10;
+
+          // Andy 2018.7.19 15:43
+          if(localStorage.getItem('user') && localStorage.getItem('user').accessToken) {  
+            req.headers.access_token = localStorage.getItem('user').accessToken;  
+          }  
           return req;
         },
         'response': function (resp) {

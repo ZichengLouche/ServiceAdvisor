@@ -7,10 +7,6 @@ class UserService {
   }
 
   // Andy 2018.6.7 12:04
-  getUserInfo(){
-    return this.httpClient.ibmGet(Config.WebServiceMapping.node.getUserInfo);
-  }
-
   sendVerifyCode(customerId, companyEmail){
     return this.httpClient.ibmPost(Config.WebServiceMapping.node.sendVerifyCode, {'customerId': customerId, 'toEmail':companyEmail});
   }

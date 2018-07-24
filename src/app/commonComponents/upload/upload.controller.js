@@ -5,9 +5,9 @@
 export default class UploadController {
     // common attrs Andy 2018.3.2 17:17
     // static $inject = ['http'];
-    constructor($rootScope, $scope, $state, $compile, fileService, userService) {
+    constructor($rootScope, $scope, $state, $compile, fileService, userService, authService) {
         [this.$rootScope, this.$scope, this.$state, this.$compile] = [$rootScope, $scope, $state, $compile];
-        [this.fileService, this.userService, this.name] = [fileService, userService, 'UploadController'];
+        [this.fileService, this.userService, this.authService, this.name] = [fileService, userService, authService,'UploadController'];
     }
 
     $onInit() {
@@ -47,7 +47,7 @@ export default class UploadController {
         for (const item of this.meplFiles) {
             this.meplFilesNames = this.meplFilesNames.concat(item.name + '、');
             this.meplFilesArray.push(item);
-            this.formData.append('meplFiles', item);
+            this.formData.append('file', item);
         }
 
         this.validate();
@@ -72,7 +72,7 @@ export default class UploadController {
 
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
         if (this.meplFiles && this.meplFiles.length > 0) {
-            this.fileService.uploadLocalFile(this.formData).then((data) => {
+            this.fileService.uploadMeplByLocalFile(this.formData).then((data) => {
                 console.log(data);
                 this.onCancel();
                 this.$state.go('main.selectFiles');
@@ -83,9 +83,9 @@ export default class UploadController {
 
         } else if (this.pmrNumber) {
             // First time check  Andy 2018.6.7 14:55
-            let userInfo = JSON.parse(localStorage.getItem('userInfo'));
+            let userInfo = JSON.parse(localStorage.getItem('user'));
             if (!userInfo || !userInfo.companyEmail || !userInfo.customerId) {
-                this.userService.getUserInfo().then((data) => {
+                this.authService.getAuthenticatedUser().then((data) => {
                     if (data.companyEmail && data.customerId) {
                         localStorage.setItem('userInfo', JSON.stringify(data));
                         this.uploadMeplByPmr();
@@ -164,6 +164,8 @@ export default class UploadController {
     }
 
     uploadMeplByPmr() {
+        let userId = this.authService.getCurrentUser().id.toString();
+
         // uploadMeplByPmr
         this.fileService.checkMeplByPmr(this.pmrNumber).then((data) => {
             if (!data.message.mepl.fileNames || data.message.mepl.fileNames.length == 0) {
@@ -172,8 +174,8 @@ export default class UploadController {
                 return;
             }
 
-            this.fileService.getFileList().then((data) => {
-                let hasMeplFile = data.mepls.some((meplFile) => meplFile.FILENAME.indexOf(this.pmrNumber) != -1);
+            this.fileService.getFileList(userId).then((data) => {
+                let hasMeplFile = data.mepls.some((meplFile) => meplFile.PMR.indexOf(this.pmrNumber) != -1);
                 if (hasMeplFile) {
                     this.$rootScope.$broadcast('DIALOG', {
                         title: 'The files of this PMR have already uploaded, are you sure to override?',
@@ -181,7 +183,7 @@ export default class UploadController {
                         leftBtnName: 'Cancel',
                         rightBtnName: 'Sure',
                         submitAction: () => {
-                            return this.fileService.uploadMeplByPmr(this.pmrNumber).then((data) => {
+                            return this.fileService.uploadMeplByPmr(userId, this.pmrNumber).then((data) => {
                                 console.log(data);
                                 this.onCancel();
                                 this.$state.go('main.selectFiles');
@@ -193,7 +195,7 @@ export default class UploadController {
                     return;
 
                 } else {
-                    this.fileService.uploadMeplByPmr(this.pmrNumber).then((data) => {
+                    this.fileService.uploadMeplByPmr(userId, this.pmrNumber).then((data) => {
                         console.log(data);
                         this.onCancel();
                         this.$state.go('main.selectFiles');
@@ -215,6 +217,6 @@ export default class UploadController {
     }
 }
 
-UploadController.$inject = ['$rootScope', '$scope', '$state', '$compile', 'fileService', 'userService',];
+UploadController.$inject = ['$rootScope', '$scope', '$state', '$compile', 'fileService', 'userService', 'authService'];
 
 

@@ -1,15 +1,15 @@
 export default class SelectFilesController {
     // common attrs Andy 2018.3.2 17:17
     // static $inject = ['http'];
-    constructor($rootScope, $scope, $state, $q, fileService) {
-        [this.$rootScope, this.$scope, this.$state, this.$q, this.fileService, this.name] = [$rootScope, $scope, $state, $q, fileService, 'SelectFilesController'];
+    constructor($rootScope, $scope, $state, $q, fileService, authService) {
+        [this.$rootScope, this.$scope, this.$state, this.$q, this.fileService, this.authService, this.name] = [$rootScope, $scope, $state, $q, fileService, authService, 'SelectFilesController'];
         this.fileList = [{ 'name': 'Subsystem A' }, { 'name': 'Subsystem B' }];
         $scope.$parent.$parent.$ctrl.routerType = $state.current.routerType;
     }
 
     $onInit() {
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
-        this.fileService.getFileList().then((data) => {
+        this.fileService.getFileList(String(this.authService.getCurrentUser().id)).then((data) => {
             this.fileList = data.mepls;
 
         }).finally(() => {
@@ -53,7 +53,7 @@ export default class SelectFilesController {
     save($index, meplId) {
         // Andy 2018.6.19 16:26
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
-        this.fileService.updateMeplComment(String(meplId), this['meplComment'+$index]).then((data) => {
+        this.fileService.updateMeplComment(String(this.authService.getCurrentUser().id), String(meplId), this['meplComment'+$index]).then((data) => {
             console.log(data);
             this.$rootScope.$broadcast('ALERT', {
                 message: 'update comment successfully',
@@ -81,6 +81,6 @@ export default class SelectFilesController {
     }
 }
 
-SelectFilesController.$inject = ['$rootScope', '$scope', '$state', '$q', 'fileService'];
+SelectFilesController.$inject = ['$rootScope', '$scope', '$state', '$q', 'fileService', 'authService'];
 
 

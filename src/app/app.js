@@ -8,6 +8,7 @@ import services from './service'
 import appRouter from './config/app.router';
 import interceptor from './config/interceptor.js';
 import filters from './config/filters.js';
+import Config from './config/config.js';
 
 // import '../style/app.css';
 import '../style/main.less';
@@ -26,41 +27,54 @@ let appComponent = {
 
 var app = angular.module('myApp', [uiRouter, commonComponents, components, directives, services, filters]);
 export default app.config(appRouter).config(interceptor)
-                  .component('app', appComponent)
-                  .name;
+    .component('app', appComponent)
+    .name;
 
-                  
-app.run(['$rootScope', '$log', '$state', '$window', function ($rootScope, $log, $state, $window) {
+
+app.run(['$rootScope', '$log', '$state', '$window', 'authService', function ($rootScope, $log, $state, $window, authService) {
     console.log($window);
-    // $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
-    //     // add one URL to deal with the SSO page
-    //     $(window).scrollTop(0);
-    //     var url = $state.current.name;
-    //     if (null === LoginService.getCurrentUserInfo() && url !== 'callback' && url !== 'login' && url != 'prelogin') {
-    //         $state.go('prelogin');
-    //     }
-    // });
 
-    $rootScope.$on('login:required', function () {
-        //LoginService.clearCache();
-        $state.go('prelogin');
-    });
+    // Andy 2018.7.19 15:43
+    authService.handleSSOAuth();
 
-    $rootScope.$on('server:error', function (event, args) {
-        $rootScope.$broadcast('BACKDROP', { isShow: false });
-        $rootScope.$broadcast('ALERT', {
-            isWarning: true,
-            message: `An error occured while requesting api from the api service server. the server responded with a status of ${args.type} (Internal Server Error).
-                     Please try again later. If the issue persists, please contact Help.`
+    authService.getAuthenticatedUser().then((data) => {
+        authService.saveUserInfo(data);
+        $rootScope.user = data;
+
+    }).then((data) => {
+
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            // $(window).scrollTop(0);
+            var url = $state.current.name;
+            if (!authService.getCurrentUser() && url !== 'callback' && url !== 'login' && url != 'prelogin') {
+                window.location.href = Config.WebServiceMapping.node.ssoLogin;
+            }
         });
-    });
 
-    $rootScope.$on('http:timedout', function (event, args) {
-        $rootScope.$broadcast('BACKDROP', { isShow: false });
-        $rootScope.$broadcast('ALERT', {
-            isWarning: true,
-            message: `The backend server response time out. the server responded with a status of ${args.type}. Please try again later. If the issue persists, please contact Help.`
+        $rootScope.$on('login:required', function () {
+            // $state.go('login');
+            window.location.href = Config.WebServiceMapping.node.ssoLogin;
         });
+
+        $rootScope.$on('server:error', function (event, args) {
+            $rootScope.$broadcast('BACKDROP', { isShow: false });
+            $rootScope.$broadcast('ALERT', {
+                isWarning: true,
+                message: `An error occured while requesting api from the api service server. the server responded with a status of ${args.type} (Internal Server Error).
+                         Please try again later. If the issue persists, please contact Help.`
+            });
+        });
+    
+        $rootScope.$on('http:timedout', function (event, args) {
+            $rootScope.$broadcast('BACKDROP', { isShow: false });
+            $rootScope.$broadcast('ALERT', {
+                isWarning: true,
+                message: `The backend server response time out. the server responded with a status of ${args.type}. Please try again later. If the issue persists, please contact Help.`
+            });
+        });
+
+    }).catch((err) => {
+        window.location.href = Config.WebServiceMapping.node.ssoLogin;
     });
 
 }]);

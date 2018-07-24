@@ -4,15 +4,20 @@ import Config from '../config/config.js';
 class HttpClient {
   // Andy 2018.3.26 17:29
   constructor($http, $q, $log, $rootScope) {
-    [this.$http, this.$q, this.$log, this.$rootScope, this.Config,] = [$http, $q, $log, $rootScope, Config];
+    [this.$http, this.$q, this.$log, this.$rootScope, this.Config] = [$http, $q, $log, $rootScope, Config];
   }
 
-  commonRequest(source, method, url, data, type) {
-    var option = { method: method, url: url, timeout: Config.httpTimedout },
+  commonRequest(source, method, url, data = {}, type) {
+    // Andy 2018.7.19 15:43
+    // Object.assign(data, {'access_token': localStorage.getItem('access_token')});
+
+    var option = { method: method, url: url, timeout: Config.httpTimedout, params: {'access_token': localStorage.getItem('access_token')} },
       defer = this.$q.defer();
 
     if (method == 'GET' || method == 'DELETE') {
-      option.params = data;
+      // option.params = data;
+      option.params = Object.assign(option.params, data);
+
     } else if (method == 'POST' || method == 'PUT' || method == 'PATCH') {
       option.data = data;
     }

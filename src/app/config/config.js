@@ -11,16 +11,18 @@ export default {
     httpTimedout: 30000,
     WebServiceMapping: {
         node: {
-            login: host + '/api/users/login',
-            uploadLocalFile: host + '/api/assets/v1/upload?access_token=xxx&zadmin=123',
-            checkMeplByPmr: host + '/api/mepls/v1/checkMeplByPmr?access_token=xxx&zadmin=123',
-            uploadMeplByPmr: host + '/api/mepls/v1/uploadMeplByPmr?access_token=xxx&zadmin=123',
-            getMepls: host + '/api/mepls/v1/getMepls?access_token=xxx&zadmin=123',
-            updateMeplComment: host + '/api/mepls/v1/updateComment?access_token=xxx&zadmin=123',
-            getUserInfo: host + '/api/accounts/v1/get?access_token=xxx&zadmin=123',
+            postLogin: host + '/api/users/login',
+            ssoLogin: host + '/api/accounts/v1/login',
+            getAuthenticatedUser: host + '/api/accounts/v1/get',
+
+            uploadMeplByLocalFile: host + '/api/mepls/v1/upload/file',
+            checkMeplByPmr: host + '/api/mepls/v1/checkMeplByPmr',
+            uploadMeplByPmr: host + '/api/mepls/v1/uploadMeplByPmr',
+            getMepls: host + '/api/mepls/v1/getMepls',
+            updateMeplComment: host + '/api/mepls/v1/updateComment',
             
-            sendVerifyCode: host + '/api/Emails/v1/send_verify_code?access_token=xxx&zadmin=123',
-            updateUserInfo: host + '/api/accounts/v1/update?access_token=xxx&zadmin=123',
+            sendVerifyCode: host + '/api/Emails/v1/send_verify_code',
+            updateUserInfo: host + '/api/accounts/v1/update',
         }
     }
 }
