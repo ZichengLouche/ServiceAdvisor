@@ -1,10 +1,20 @@
+
+// import LandingController from '../controller/landing.controller.js';
+
 routing.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
 
 export default function routing($stateProvider, $locationProvider, $urlRouterProvider) {
     // $locationProvider.html5Mode(true);
-    $locationProvider.html5Mode({enabled:false,requireBase:false});
-    $urlRouterProvider.otherwise('/login');
+    $locationProvider.html5Mode({ enabled: false, requireBase: false });
+    // $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/landing');
+
     $stateProvider
+        .state('landing', {
+            url: '/landing',
+            controller: 'landingController',
+            // controller: LandingController,
+        })
         .state('login', {
             url: '/login',
             template: '<login></login>'

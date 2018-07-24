@@ -4,10 +4,12 @@ import uiRouter from 'angular-ui-router';
 import commonComponents from './commonComponents';
 import components from './components';
 import directives from './directives';
-import services from './service'
+import services from './service';
+import controllers from './controller';
+import filters from './config/filters.js';
+
 import appRouter from './config/app.router';
 import interceptor from './config/interceptor.js';
-import filters from './config/filters.js';
 import Config from './config/config.js';
 
 // import '../style/app.css';
@@ -25,7 +27,7 @@ let appComponent = {
 };
 
 
-var app = angular.module('myApp', [uiRouter, commonComponents, components, directives, services, filters]);
+var app = angular.module('myApp', [uiRouter, commonComponents, components, directives, services, filters, controllers]);
 export default app.config(appRouter).config(interceptor)
     .component('app', appComponent)
     .name;
@@ -41,9 +43,9 @@ app.run(['$rootScope', '$log', '$state', '$window', 'authService', function ($ro
         authService.saveUserInfo(data);
         $rootScope.user = data;
 
-    }).then((data) => {
+    }).then(() => {
 
-        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        $rootScope.$on('$stateChangeSuccess', function () {
             // $(window).scrollTop(0);
             var url = $state.current.name;
             if (!authService.getCurrentUser() && url !== 'callback' && url !== 'login' && url != 'prelogin') {
@@ -74,6 +76,7 @@ app.run(['$rootScope', '$log', '$state', '$window', 'authService', function ($ro
         });
 
     }).catch((err) => {
+        console.log('authService.getAuthenticatedUser() occuered error:', err);
         window.location.href = Config.WebServiceMapping.node.ssoLogin;
     });
 

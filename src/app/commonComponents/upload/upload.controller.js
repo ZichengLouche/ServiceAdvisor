@@ -135,7 +135,7 @@ export default class UploadController {
                                             return this.userService.updateUserInfo(this.customerId, this.companyEmail, this.verificationCode).then((data) => {
                                                 this.$rootScope.$broadcast('ALERT', {
                                                     message: 'update user info successfully',
-                                                    success: true
+                                                    success: data == 'success'
                                                 });
 
                                                 this.$rootScope.$broadcast('backdrop:loading', { isShow: true });

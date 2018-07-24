@@ -17,7 +17,7 @@ export default {
 
             uploadMeplByLocalFile: host + '/api/mepls/v1/upload/file',
             checkMeplByPmr: host + '/api/mepls/v1/checkMeplByPmr',
-            uploadMeplByPmr: host + '/api/mepls/v1/uploadMeplByPmr',
+            uploadMeplByPmr: host + '/api/mepls/v1/uploadMeplByPmrSync',
             getMepls: host + '/api/mepls/v1/getMepls',
             updateMeplComment: host + '/api/mepls/v1/updateComment',
             
