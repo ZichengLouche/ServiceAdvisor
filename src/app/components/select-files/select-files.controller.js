@@ -4,7 +4,12 @@ export default class SelectFilesController {
     constructor($rootScope, $scope, $state, $q, fileService, authService) {
         [this.$rootScope, this.$scope, this.$state, this.$q, this.fileService, this.authService, this.name] = [$rootScope, $scope, $state, $q, fileService, authService, 'SelectFilesController'];
         this.fileList = [{ 'name': 'Subsystem A' }, { 'name': 'Subsystem B' }];
+        this.selectedMeplFiles = [];
         $scope.$parent.$parent.$ctrl.routerType = $state.current.routerType;
+    }
+
+    $onChanges() {
+        console.log('SelectFilesController.$onChanges.this:', this);
     }
 
     $onInit() {
@@ -68,16 +73,34 @@ export default class SelectFilesController {
     }
 
     generate() {
-        this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
-        this.fileService.upload(this.formData).then((data) => {
-            console.log(data);
-            this.onCloseDropdown();
-            this.$state.go('main.selectFiles');
+        // Andy 2018.7.25 15:57
+        if(!this.selectedMeplFiles || this.selectedMeplFiles.length < 1) {
+            this.$rootScope.$broadcast('ALERT', {
+                message: 'Please select at least one MEPL file first!',
+                isWarning: true,
+            });
+            return;
+        }
 
-        }).finally(() => {
+        this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
+
+        setTimeout(() => {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
             this.$state.go('main.report');
-        });
+        }, 2000);
+
+        // this.fileService.upload(this.formData).then((data) => {
+        //     console.log(data);
+        //     this.onCloseDropdown();
+        //     this.$state.go('main.selectFiles');
+
+        // }).catch((err) => {
+        //     console.log(err);
+
+        // }).finally(() => {
+        //     this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
+        //     this.$state.go('main.report');
+        // });
     }
 }
 
