@@ -4,8 +4,9 @@ export default class SelectFilesController {
     constructor($rootScope, $scope, $state, $q, fileService, authService) {
         [this.$rootScope, this.$scope, this.$state, this.$q, this.fileService, this.authService, this.name] = [$rootScope, $scope, $state, $q, fileService, authService, 'SelectFilesController'];
         this.fileList = [{ 'name': 'Subsystem A' }, { 'name': 'Subsystem B' }];
-        this.selectedMeplFiles = [];
         $scope.$parent.$parent.$ctrl.routerType = $state.current.routerType;
+        this.selectedMeplFiles = [];
+        this.selecteAll = false;
     }
 
     $onChanges() {
@@ -20,6 +21,19 @@ export default class SelectFilesController {
         }).finally(() => {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
         });
+
+        // Andy 2018.7.26 19:01
+        this.$scope.$watch('$ctrl.selecteAll', (newVal, oldVal) => {
+            if (newVal == oldVal) {
+                return;
+            }
+
+            if(this.selecteAll) {
+                this.selectedMeplFiles = this.fileList;
+            } else {
+                this.selectedMeplFiles = [];
+            }
+        })
     }
 
     edit($index) {
@@ -83,6 +97,8 @@ export default class SelectFilesController {
         }
 
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
+
+        this.selectedMeplFiles = this.selectedMeplFiles.filter(item => item);
 
         setTimeout(() => {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: false });

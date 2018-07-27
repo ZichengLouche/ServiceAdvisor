@@ -7,7 +7,9 @@
         </div>
         <div class="table" style="margin: 25px 0px 58px 0px;">
             <div class="flex-row table-head" >
-                <div style="width:5%; text-align: center;"></div>
+                <div style="width:5%; text-align: center;">
+                    <input type="checkBox" data-ng-model="$ctrl.selecteAll" ng-true-value="true" ng-false-value="false" /> 
+                </div>
                 <div style="width:17%;">NAME</div>
                 <div style="width:12%;">RELEASE</div>
                 <div style="width:16%;">SUBMISSION DATE</div>
@@ -15,9 +17,10 @@
                 <div style="width:28%;">COMMENT</div>
                 <div style="width:4%;" data-ng-click="sortOrder('totalCost')"></div>
             </div>
-            <div class="flex-row table-body" data-ng-repeat="file in $ctrl.fileList">
+            <div class="flex-row table-body" data-ng-repeat="file in $ctrl.fileList" ng-for="myCheckbox[file.MEPLID]">
                 <div style="width:5%; text-align: center;"> 
-                    <input class="dib" type="checkBox" data-ng-model="$ctrl.selectedMeplFiles[$index]" ng-true-value="{{file}}" ng-false-value="false" ng-change="toggleCheckItem(item)"/> 
+                    <input type="checkBox" data-ng-model="$ctrl.selectedMeplFiles[$index]" ng-true-value="{{file}}" ng-false-value="" ng-change="toggleCheckItem(item)"
+                           id="myCheckbox[{{file.MEPLID}}]" name="myMepls" /> 
                 </div>
                 <div style="width:17%;"> {{ file.FILENAME.slice(file.FILENAME.lastIndexOf('/') + 1) }} </div>
                 <div style="width:12%;"> {{ file.RELEASE }} </div>
