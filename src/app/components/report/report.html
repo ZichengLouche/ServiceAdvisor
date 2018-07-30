@@ -5,7 +5,11 @@
     </div>
     <div style="display: flex;" ng-repeat="row in $ctrl.reportList">
         <div class="item" ng-repeat="report in row" ui-sref='main.reportDetail({orderId: "{{item.orderNumber}}"})'>
-            <div><img src="/images/card-label-A10.svg" style="position: absolute;"></div>
+            <div>
+                <img src="/images/card-label-A10.svg" style="position: absolute;" ng-if="report.release.indexOf('a') > -1">
+                <img src="/images/card-label-B10.svg" style="position: absolute;" ng-if="report.release.indexOf('b') > -1">
+                <img src="/images/card-label-C10.svg" style="position: absolute;" ng-if="report.release.indexOf('c') > -1">
+            </div>
             <div class="item-top" >
                 <div>
                     <span style="font-size: 16px;">{{ report.name }}</span>  <br>
@@ -29,7 +33,7 @@
             </div>
         </div>
     </div>
-    <div style="font-family: HelvNeue Roman for IBM; font-size: 20px; color: #1D3649; text-align: center; margin-top: 154px;" data-ng-if="!$ctrl.reportList || $ctrl.reportList.length==0">
+    <div style="font-family: HelvNeue Roman for IBM; font-size: 20px; color: #1D3649; text-align: center; margin-top: 154px;" ng-if="!$ctrl.reportList || $ctrl.reportList.length==0">
         <p>
             No Reports Now.  <br>
             Go Create One!

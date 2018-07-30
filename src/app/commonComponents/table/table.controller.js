@@ -8,7 +8,7 @@ export default class TableController {
         })
     }
     $onInit() {
-        
+        console.log('TableController this:', this);
     }
 
     $onChanges() {

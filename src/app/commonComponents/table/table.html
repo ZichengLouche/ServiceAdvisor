@@ -11,7 +11,7 @@
         <tr ng-repeat="entity in $ctrl.data track by $index">
             <td ng-if="$ctrl.isShowCheckbox"><input type="checkbox" ng-checked="entity.isSelected"/></td>
             <!-- <td ng-repeat="item in entity.list track by $index">{{::item}}</td> -->
-            <td ng-repeat="columnMap in $ctrl.tableColumns track by $index">{{::entity[columnMap[1]]}}</td>
+            <td ng-repeat="columnMap in $ctrl.tableColumns track by $index">{{entity[columnMap[1]]}}</td>
             <td ng-if="$ctrl.btns">
                 <button class="{{btn.class}}" ng-repeat="btn in $ctrl.btns track by $index" ng-click="btn.event(entity)">{{btn.name}}</button>
             </td>

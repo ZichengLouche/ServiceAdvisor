@@ -1,0 +1,19 @@
+<div class="pager-container">
+    <ul class="my-pager">
+        <li ng-class="{'disabled' : $ctrl.currentPage == 1}">
+            <a href="javascript:;" rel="external nofollow" ng-click="$ctrl.prevPage()">
+                <img ng-show="$ctrl.currentPage == 1" src="images/arrow/arrow-left-grey.png" width="20px" >
+                <img ng-show="$ctrl.currentPage > 1" src="images/arrow/arrow-left-active.png" width="20px" >
+            </a>
+        </li>
+        <li class="page-number">
+            {{ $ctrl.currentPage }} of {{ $ctrl.pages }}
+        </li>
+        <li ng-class="{'disabled' : $ctrl.currentPage == $ctrl.pages}">
+            <a href="javascript:;" rel="external nofollow" ng-click="$ctrl.nextPage()">
+                <img ng-show="$ctrl.currentPage >= $ctrl.pages" src="images/arrow/arrow-right-grey.png" width="20px">
+                <img ng-show="$ctrl.currentPage < $ctrl.pages" src="images/arrow/arrow-right-active.png" width="20px" >
+            </a>
+        </li>
+    </ul>
+</div>
