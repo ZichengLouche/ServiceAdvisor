@@ -13,7 +13,7 @@
             <div class="item-top" >
                 <div>
                     <span style="font-size: 16px;">{{ report.name }}</span>  <br>
-                    <span style="font-size: 12px; color: #777677;"><span style="color: #4178BE">{{ report.reportStatus }}</span> - Updated: Jan 01, 2017 </span>
+                    <span style="font-size: 12px; color: #777677;"><span style="color: #4178BE">{{ report.reportStatus }}</span> - Updated: {{ report.reportPeriod | date:"MMM dd, y" }} </span>
                 </div>
                 <span style="font-family: Lubalin Book for IBM; font-size: 40px; color: #8CD211;">{{ report.score }}</span>
             </div>
