@@ -88,35 +88,32 @@ export default class SelectFilesController {
 
     generate() {
         // Andy 2018.7.25 15:57
+        this.selectedMeplFiles = this.selectedMeplFiles.filter(item => item);
+
         if(!this.selectedMeplFiles || this.selectedMeplFiles.length < 1) {
             this.$rootScope.$broadcast('ALERT', {
                 message: 'Please select at least one MEPL file first!',
                 isWarning: true,
             });
             return;
+
+        } else if(this.selectedMeplFiles.length > 1) {
+            this.$rootScope.$broadcast('ALERT', {
+                message: 'Only a single MEPL file report is currently supported!',
+                isWarning: true,
+            });
+            
+            this.selectedMeplFiles = [];
+            return;
         }
 
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
+        this.fileService.generateReport(String(this.selectedMeplFiles[0].MEPLID)).then((data) => {
+            this.$state.go('main.reportDetail', {reportDetail:data});
 
-        this.selectedMeplFiles = this.selectedMeplFiles.filter(item => item);
-
-        setTimeout(() => {
+        }).finally(() => {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
-            this.$state.go('main.report');
-        }, 2000);
-
-        // this.fileService.upload(this.formData).then((data) => {
-        //     console.log(data);
-        //     this.onCloseDropdown();
-        //     this.$state.go('main.selectFiles');
-
-        // }).catch((err) => {
-        //     console.log(err);
-
-        // }).finally(() => {
-        //     this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
-        //     this.$state.go('main.report');
-        // });
+        });
     }
 }
 

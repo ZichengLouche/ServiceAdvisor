@@ -7,9 +7,11 @@ export default class PagerController {
         
     }
 
-    $onInit() {
+    $onChanges(changes) {
         this.pages = Math.ceil(this.totalDataNum / this.pageSize);
+    }
 
+    $onInit() {
         // this.$scope.$watch('search.c', () => {
         //     this.currentPage = 0;
         //     this.queryResult();
@@ -35,14 +37,17 @@ export default class PagerController {
     }
 
 
-    $onChanges() {
-    }
+    // $doCheck (data) {
+    //     console.log('PagerController doCheck ', this, data);
+    // }
 
-    $onDestroy() {
-    }
-
-    $postLink() {
-    }
+    // $postLink(data) {
+    //     console.log('PagerController postLink', this, data);
+    // }
+    
+    // $onDestroy(data) {
+    //     console.log('PagerController Destroy', this, data);
+    // }
 }
 
 PagerController.$inject = ['$rootScope', '$scope'];

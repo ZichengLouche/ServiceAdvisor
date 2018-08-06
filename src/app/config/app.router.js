@@ -20,6 +20,8 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
             template: '<login></login>'
         })
         .state('main', {
+            // cache: false, 
+            // reload:true,  
             url: '/main',
             template: '<main></main>'
         })
@@ -39,8 +41,9 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
             template: '<report></report>'
         })
         .state('main.reportDetail', {
-            url: '/reportDetail',
+            url: '/reportDetail/:reportId',
             routerType: 'report',
+            params: { reportDetail: null },
             template: '<report-detail></report-detail>'
         })
 }

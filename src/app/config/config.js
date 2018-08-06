@@ -23,6 +23,10 @@ export default {
             
             sendVerifyCode: host + '/api/Emails/v1/send_verify_code',
             updateUserInfo: host + '/api/accounts/v1/update',
+
+            generateReport: host + '/api/Missinghipers/v2/resultV2',
+            getReportList: host + '/api/Missinghipers/getReportList',
+            getReport: host + '/api/Missinghipers/getReport',
         }
     }
 }
