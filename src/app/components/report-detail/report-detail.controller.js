@@ -39,16 +39,18 @@ export default class ReportDetailController {
         if(reportId) {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
             return this.fileService.getReport(reportId).then((data) => {
-                this.reportDetail = data.result[0];
-                this.missingHIPERs = this.reportDetail.content.hiper || [];
-                this.PEs = this.reportDetail.content.peres || [];
-                this.inconsistencies = this.reportDetail.content.inconsistentres || [];
+                this.reportDetail = data.result[0].content;
+                this.reportDetail.reportPeriod = new Date(this.reportDetail.reportPeriod);
+                this.missingHIPERs = this.reportDetail.hiper || [];
+                this.PEs = this.reportDetail.peres || [];
+                this.inconsistencies = this.reportDetail.inconsistentres || [];
     
             }).finally(() => {
                 this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
             });
 
         } else if(this.reportDetail && Object.keys(this.reportDetail).length > 0) {
+            this.reportDetail.reportPeriod = new Date(this.reportDetail.reportPeriod);
             this.missingHIPERs = this.reportDetail.hiper || [];
             this.PEs = this.reportDetail.peres || [];
             this.inconsistencies = this.reportDetail.inconsistentres || [];
