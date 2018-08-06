@@ -75,7 +75,7 @@ export default class UploadController {
             this.fileService.uploadMeplByLocalFile(this.formData).then((data) => {
                 console.log(data);
                 this.onCancel();
-                this.$state.go('main.selectFiles');
+                this.$state.go('main.selectFiles', null, {reload: true});
 
             }).finally(() => {
                 this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
@@ -186,7 +186,7 @@ export default class UploadController {
                             return this.fileService.uploadMeplByPmr(userId, this.pmrNumber).then((data) => {
                                 console.log(data);
                                 this.onCancel();
-                                this.$state.go('main.selectFiles');
+                                this.$state.go('main.selectFiles', null, {reload: true});
                             })
                         }
                     });
@@ -198,7 +198,7 @@ export default class UploadController {
                     this.fileService.uploadMeplByPmr(userId, this.pmrNumber).then((data) => {
                         console.log(data);
                         this.onCancel();
-                        this.$state.go('main.selectFiles');
+                        this.$state.go('main.selectFiles', null, {reload: true});
                     }).finally(() => {
                         this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
                     });
