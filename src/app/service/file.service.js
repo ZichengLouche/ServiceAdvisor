@@ -40,7 +40,10 @@ class FileService {
   getReport(reportId) {
     return this.httpClient.ibmGet(Config.WebServiceMapping.node.getReport, { 'reportId': reportId });
   }
-  
+  sendReport(meplId, sendto) {
+    return this.httpClient.ibmPost(Config.WebServiceMapping.node.sendReport, { 'meplId': meplId, 'sendto': sendto });
+  }
+
 }
 
 FileService.$inject = ['httpClient', 'authService'];

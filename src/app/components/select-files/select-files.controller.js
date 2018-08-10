@@ -16,7 +16,10 @@ export default class SelectFilesController {
     $onInit() {
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
         this.fileService.getFileList(String(this.authService.getCurrentUser().id)).then((data) => {
-            this.fileList = data.mepls;
+            this.$rootScope.fileList = this.fileList = data.mepls;
+            data.mepls.forEach((v, k) => {
+                v.DATE = new Date(v.DATE);
+            });
 
         }).finally(() => {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: false });

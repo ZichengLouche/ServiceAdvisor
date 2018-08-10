@@ -104,41 +104,54 @@ export default class ReportDetailController {
         });
     }
 
-    test(obj) {
-        console.log('email input changed:' + this.email + '; obj:', obj);
-    }
-
-    send(item) {
-        console.log(item);
-        let originContent = '<input style="width: 100%;" type="text" class="input-border" placeholder="Enter email address" ng-model="$ctrl.email" ng-change="$ctrl.test(this)" id="output" >';
+    send() {
+        let originContent = '<input style="width: 100%;" type="email" class="input-border" placeholder="Enter email address" ng-model="$ctrl.sendToEmail" ng-change="$ctrl.validate()" required id="email">';
         let compiledContent = this.$compile(originContent)(this.$scope);
         // angular.element('.operationPrompt').append(compiledContent);
+        let cancelAction = () => {
+            this.sendToEmail = undefined;
+        };
 
         this.$rootScope.$broadcast('DIALOG', {
             title: 'Send report to',
             content: compiledContent,
             leftBtnName: 'Cancel',
-            rightBtnName: 'Delete',
+            rightBtnName: 'Done',
             submitAction: () => {
-                var defer = this.$q.defer();
-                // WishlistService.addWishItem(LoginService.getCurrentProfileId(), productId).then(function (data) {
-                //     $log.debug(data.status);
-                //     if (data.status === "Success") {
-                //         $rootScope.$broadcast('ALERT', {
-                //             message: 'Add to wish list successfully',
-                //             success: true
-                //         });
-                //         defer.resolve();
-                //     } else {
-                //         defer.reject();
-                //     }
-                // }, function (err) {
-                //     $log.error(err);
-                //     defer.reject();
-                // });
-                return defer.promise;
-            }
+                // if(this.validate()) return Promise.reject(`<span style="position: relative;top: 10px;">${ this.$rootScope.validationMessage }</span>`);
+                if(this.validate()) return Promise.reject();
+
+                return this.fileService.sendReport(this.reportDetail.meplId, this.sendToEmail).then((data) => {
+                    cancelAction();
+                    this.$rootScope.$broadcast('ALERT', {
+                        message: 'Send report to the email successfully',
+                        success: data == 'success'
+                    });
+                })
+            },
+            cancelAction: cancelAction,
         });
+    }
+
+    // Andy 2018.8.9 18:00
+    validate() {
+        if(!document.querySelector('#email').checkValidity()) {
+            if(document.querySelector('#email').validity.typeMismatch) {
+                this.$rootScope.validationMessage = '<span style="position: relative;top: 10px;">*The email format is invalid!</span>';
+
+            } else {
+                this.$rootScope.validationMessage = '<span style="position: relative;top: 10px;">*Please fill in an email!</span>';
+            }
+
+        } else {
+            this.$rootScope.validationMessage = '';
+        }
+
+        return this.$rootScope.validationMessage;
+    }
+
+    test(obj) {
+        console.log('email input changed:' + this.email + '; obj:', obj);
     }
 }
 

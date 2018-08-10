@@ -12,6 +12,7 @@ class LandingController {
             this.fileList = data.mepls;
             if(data.mepls && data.mepls.length > 0) {
                 this.$state.go('main.selectFiles');
+                this.$rootScope.fileList = data.mepls;
 
             } else {
                 this.$state.go('main.home');
@@ -23,7 +24,7 @@ class LandingController {
     }
 
     $onChanges() {
-        // console.log('LandingController.$onChanges.this:', this); 
+        console.log('LandingController.$onChanges.this:', this); 
     }
 }
 

@@ -9,11 +9,9 @@ export default class HomeController {
         [this.$rootScope, this.$scope, this.$state, this.name] = [$rootScope, $scope, $state, 'HomeController'];
         $scope.$parent.$parent.$ctrl.routerType = $state.current.routerType;
     }
-    login() {
-        // this.http.get({userName: 'link', userPassword: '23333'}, url.login, (data) => {
-        //     console.log(data)
-        // });
-        this.showlogin=true;
+    
+    $onChanges() {
+        console.log('HomeController.$onChanges.this:', this);
     }
 
     // showUpload() {

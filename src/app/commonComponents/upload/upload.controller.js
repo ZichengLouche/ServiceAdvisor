@@ -20,10 +20,10 @@ export default class UploadController {
 
         this.onCancel = () => {
             this.isShown = !this.isShown;
+            this.validationMessage = null;
             this.meplFiles = null;
             this.meplFilesNames = null;
             this.pmrNumber = null;
-            this.validationMessage = null;
             this.formData = null;
         }
 
@@ -215,6 +215,10 @@ export default class UploadController {
     $onDestroy() {
         this.backdropListener();
     }
+
+    // test(obj) {
+    //     console.log('email input changed:' + this.companyEmail + '; obj:', obj);
+    // }
 }
 
 UploadController.$inject = ['$rootScope', '$scope', '$state', '$compile', 'fileService', 'userService', 'authService'];

@@ -27,6 +27,7 @@ export default {
             generateReport: host + '/api/Missinghipers/v2/resultV2',
             getReportList: host + '/api/Missinghipers/getReportList',
             getReport: host + '/api/Missinghipers/getReport',
+            sendReport: host + '/api/sendingreport/v2/SendingReport',
         }
     }
 }

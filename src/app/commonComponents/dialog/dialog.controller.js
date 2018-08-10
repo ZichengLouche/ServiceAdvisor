@@ -13,6 +13,7 @@ export default class DialogController {
             this.leftBtnName = args.leftBtnName || '';
             this.rightBtnName = args.rightBtnName || '';
             this.submitAction = args.submitAction || {};
+            this.cancelAction = args.cancelAction;
             // textarea UI
             this.justificationText = '';
             this.hasTextarea = args.hasTextarea || false;
@@ -31,7 +32,8 @@ export default class DialogController {
 
     onCancel() {
         this.isShown = false;
-        this.warningInfo = '';
+        this.warningInfo = this.$rootScope.validationMessage = '';
+        if(this.cancelAction) this.cancelAction();
     }
 
     onSubmit() {

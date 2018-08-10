@@ -11,7 +11,7 @@
             <div ng-show="$ctrl.hasTextarea" class="mt10">
                 <textarea rows="4" cols="1" ng-model="$ctrl.justificationText"></textarea>
             </div>
-            <div class="warnInfo" ng-bind-html="$ctrl.warningInfo | trust">*Please fill in at least 20 characters in the justification area.</div>
+            <div class="warnInfo" ng-bind-html="$ctrl.warningInfo || $root.validationMessage | trust">*Please fill in at least 20 characters in the justification area.</div>
         </div>
 
         <div class="dialog-footer">
