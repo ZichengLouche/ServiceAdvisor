@@ -19,6 +19,7 @@ export default {
             checkMeplByPmr: host + '/api/mepls/v1/checkMeplByPmr',
             uploadMeplByPmr: host + '/api/mepls/v1/uploadMeplByPmrSync',
             getMepls: host + '/api/mepls/v1/getMepls',
+            removeMepl: host + '/api/mepls/removeMepl',
             updateMeplComment: host + '/api/mepls/v1/updateComment',
             
             sendVerifyCode: host + '/api/Emails/v1/send_verify_code',
@@ -27,6 +28,7 @@ export default {
             generateReport: host + '/api/Missinghipers/v2/resultV2',
             getReportList: host + '/api/Missinghipers/getReportList',
             getReport: host + '/api/Missinghipers/getReport',
+            removeReport: host + '/api/Missinghipers/removeReport',
             sendReport: host + '/api/sendingreport/v2/SendingReport',
         }
     }

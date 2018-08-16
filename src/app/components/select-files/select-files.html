@@ -25,7 +25,7 @@
                 <div style="width:17%;"> {{ file.FILEPATH.slice(file.FILEPATH.lastIndexOf('/') + 1) }} </div>
                 <div style="width:12%;"> {{ file.RELEASE }} </div>
                 <div style="width:16%;"> {{ file.DATE | date:'y-MM-dd HH:mm:ss'}} </div>
-                <div style="width:18%;"> {{ file.REPORTTIME }} </div>
+                <div style="width:18%;"> {{ file.REPORTTIME | date:'y-MM-dd HH:mm:ss'}} </div>
                 <div style="width:28%;">
                     <input class="item-value" style="width: 96%;" data-ng-model="$ctrl['meplComment'+$index]" data-ng-readonly="!$ctrl['editable'+$index]" data-ng-class="{'item-value-editable':$ctrl['editable'+$index]}" ng-value="file.COMMENT">
                 </div>

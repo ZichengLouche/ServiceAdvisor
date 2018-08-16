@@ -15,6 +15,9 @@ class FileService {
   getFileList(userId) {
     return this.httpClient.ibmGet(Config.WebServiceMapping.node.getMepls, { 'userId': userId });
   }
+  removeMepl(meplId) {
+    return this.httpClient.ibmPost(Config.WebServiceMapping.node.removeMepl, { 'meplId': meplId });
+  }
 
   updateMeplComment(userId, meplId, comment) {
     return this.httpClient.ibmPost(Config.WebServiceMapping.node.updateMeplComment, { 'userId': userId, 'meplId': meplId, 'comment': comment });
@@ -23,12 +26,12 @@ class FileService {
   uploadMeplByPmr(userId, pmr) {
     return this.httpClient.ibmPost(Config.WebServiceMapping.node.uploadMeplByPmr, { 'userId': userId, 'pmr': pmr });
   }
-
   uploadMeplByLocalFile(params) {
     // var formData = new FormData();
     // formData.append('meplFiles', params);
     return this.httpClient.ibmPostFormData(Config.WebServiceMapping.node.uploadMeplByLocalFile, params);
   }
+
 
   // Andy 2018.8.1 18:15
   generateReport(meplId) {
@@ -39,6 +42,9 @@ class FileService {
   }
   getReport(reportId) {
     return this.httpClient.ibmGet(Config.WebServiceMapping.node.getReport, { 'reportId': reportId });
+  }
+  removeReport(reportId) {
+    return this.httpClient.ibmPost(Config.WebServiceMapping.node.removeReport, { 'reportId': reportId });
   }
   sendReport(meplId, sendto) {
     return this.httpClient.ibmPost(Config.WebServiceMapping.node.sendReport, { 'meplId': meplId, 'sendto': sendto });

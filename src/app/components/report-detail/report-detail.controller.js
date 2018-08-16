@@ -5,7 +5,6 @@ export default class ReportDetailController {
         [this.$rootScope, this.$scope, this.$state, this.$stateParams, this.$compile, this.fileService, this.name] = [$rootScope, $scope, $state, $stateParams, $compile, fileService, 'ReportDetailController'];
         $scope.$parent.$parent.$ctrl.routerType = $state.current.routerType;
         this.pageSize = 10;
-        this.reportList = [[{'name':'Subsystem A'}, {'name':'Subsystem B'}, {'name':'Subsystem B'}],[{'name':'Subsystem A'}, {'name':'Subsystem B'}, {'name':'Subsystem B'}]];
     }
 
     $onInit() {
@@ -34,11 +33,11 @@ export default class ReportDetailController {
     }
 
     getDataSource() {
-        let reportId = this.$stateParams.reportId;
+        this.reportId = this.$stateParams.reportId;
         this.reportDetail = this.$stateParams.reportDetail ? this.$stateParams.reportDetail.result : {};
-        if(reportId) {
+        if(this.reportId) {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
-            return this.fileService.getReport(reportId).then((data) => {
+            return this.fileService.getReport(this.reportId).then((data) => {
                 this.reportDetail = data.result[0].content;
                 this.reportDetail.reportPeriod = new Date(this.reportDetail.reportPeriod);
                 this.missingHIPERs = this.reportDetail.hiper || [];
@@ -75,31 +74,16 @@ export default class ReportDetailController {
         this.inconsistencyPaginationItems = this.inconsistencies.slice(pageSize * (currentPage - 1), (currentPage * pageSize));
     }
 
-    delete(item) {
-        console.log(item);
+    delete() {
         this.$rootScope.$broadcast('DIALOG', {
             title: 'Are you sure to delete this report?',
             content: '',
             leftBtnName: 'Cancel',
             rightBtnName: 'Delete',
             submitAction: () => {
-                var defer = this.$q.defer();
-                // WishlistService.addWishItem(LoginService.getCurrentProfileId(), productId).then(function (data) {
-                //     $log.debug(data.status);
-                //     if (data.status === "Success") {
-                //         $rootScope.$broadcast('ALERT', {
-                //             message: 'Add to wish list successfully',
-                //             success: true
-                //         });
-                //         defer.resolve();
-                //     } else {
-                //         defer.reject();
-                //     }
-                // }, function (err) {
-                //     $log.error(err);
-                //     defer.reject();
-                // });
-                return defer.promise;
+                return this.fileService.removeReport(this.reportId).then((data) => {
+                    this.$state.go('main.report');
+                })
             }
         });
     }
@@ -124,8 +108,8 @@ export default class ReportDetailController {
                 return this.fileService.sendReport(this.reportDetail.meplId, this.sendToEmail).then((data) => {
                     cancelAction();
                     this.$rootScope.$broadcast('ALERT', {
-                        message: 'Send report to the email successfully',
-                        success: data == 'success'
+                        message: data == 'ok' ? 'Send report to the email successfully' : `Send report to the email failed: ${data}`,
+                        success: data == 'ok',
                     });
                 })
             },
