@@ -14,7 +14,7 @@ export default class ReportDetailController {
             this.queryPEsResultByPagination(1, this.pageSize);
             this.queryINsResultByPagination(1, this.pageSize);
         }, (err) => {
-            console.log('ReportDetailController.getDataSource promise rejected:', err)
+            console.log('ReportDetailController.getDataSource promise rejected:', err);
         })
 
         this.tHead = ['APAR', 'PTF', 'ABSTRACT', 'CLOSEDATE', 'MODULE', 'SEV'];
@@ -57,7 +57,6 @@ export default class ReportDetailController {
             return Promise.resolve(this.reportDetail);  
             
         } else {
-            
             return Promise.reject('');  
         }
     }

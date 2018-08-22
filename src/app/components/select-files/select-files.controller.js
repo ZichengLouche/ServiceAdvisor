@@ -101,7 +101,8 @@ export default class SelectFilesController {
 
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
         this.fileService.generateReport(String(this.selectedMeplFiles[0].MEPLID)).then((data) => {
-            this.$state.go('main.reportDetail', {reportDetail:data});
+            // this.$state.go('main.reportDetail', {reportDetail:data});
+            this.$state.go('main.reportDetail', {reportId: data.result});
 
         }).finally(() => {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
