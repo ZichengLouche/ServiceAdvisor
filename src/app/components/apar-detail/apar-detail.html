@@ -10,64 +10,76 @@
         </div> -->
         <div class="table" style="margin: 70px 0px 0px 0px;">
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                     PTF
                 </div>
-                <div style="">UI53036，</div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>UI53036，</div>
             </div>
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                         PEPTF
                 </div>
-                <div style="">N/A</div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>N/A</div>
             </div>
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                         Recommendation
                 </div>
-                <div style="">UI53036，</div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>
+                    <img src="/images/star/star-empty.svg" class="cp" ng-show='!$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=true'>
+                </div>
             </div>
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                         Business Impact
                 </div>
-                <div style="">SYSTEMOUTAGE</div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>SYSTEMOUTAGE</div>
             </div>
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                         Abstract
                 </div>
-                <div style="">Db2 Eots Incorrectly aborted an in-commit UR After RRS was restarted and had done a resync with rrsaf.</div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>Db2 Eots Incorrectly aborted an in-commit UR After RRS was restarted and had done a resync with rrsaf.</div>
             </div>
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                         Trigger
                 </div>
-                <div style="">Db2 deferred End of Task processing may abort a DB2 UR that z/OS RRS was intending to commit.\nThis may occur if z/OS RRS is restarted and it has a UR that it intends to commit, but the Db2 application is cancelled or terminates before z/OS RRS is able to drive the Db2 RRSAF Commit Exit."</div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>Db2 deferred End of Task processing may abort a DB2 UR that z/OS RRS was intending to commit.\nThis may occur if z/OS RRS is restarted and it has a UR that it intends to commit, but the Db2 application is cancelled or terminates before z/OS RRS is able to drive the Db2 RRSAF Commit Exit."</div>
             </div>
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                         Local Fix
                 </div>
-                <div style="">N/A</div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>N/A</div>
             </div>
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                         Users Affected
                 </div>
-                <div style="">All Db2 11 & Db2 12 for z/os users of PITR(Point in time recovery) restart</div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>All Db2 11 & Db2 12 for z/os users of PITR(Point in time recovery) restart</div>
             </div>
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                         Summary
                 </div>
-                <div style="">During Db2 PITR restart, any inflight thread(Unit of Recovery) that requires to be backed out, may abend in DSNIARPL equal 5008. This abend should be avoided because we know this thread will be recovered later by RESTORE utility. </div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>During Db2 PITR restart, any inflight thread(Unit of Recovery) that requires to be backed out, may abend in DSNIARPL equal 5008. This abend should be avoided because we know this thread will be recovered later by RESTORE utility. </div>
             </div>
             <div class="flex-row">
-                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                <div class="col-2 table-head nb" style="padding: 0px 0px 0px 15px; min-width:8%;">
                         Conclusion
                 </div>
-                <div style="">The logic in DSNIARPL is changed to avoid dsniarpl:5008 abend during PITR restart.</div>
+                <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
+                <div>The logic in DSNIARPL is changed to avoid dsniarpl:5008 abend during PITR restart.</div>
             </div>
         </div>
     </div>

@@ -1,0 +1,12 @@
+/* Andy 2018.4.26 11:32 */
+
+.apar-detail-container {
+  padding: 0px 80px;
+}
+
+.vertical-line {
+  border-right: 1px solid #3D70B2;
+  width: 1px;
+  /* height: 10px; */
+  align-self: stretch;
+}

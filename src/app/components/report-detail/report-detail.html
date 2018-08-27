@@ -20,8 +20,8 @@
                     <div class="page-title" style="font-size: 14px;"> Missing HIPERs </div>
                     <div class="item-part-number" style="color:#A8216E">
                         <span style="margin-right: 10px;"> {{ $ctrl.missingHIPERs.length }} </span> 
-                        <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=true'>
-                        <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=false'>
+                        <img src="/images/arrow/arrow-down.svg" class="cp" ng-show='!$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=true'>
+                        <img src="/images/arrow/arrow-up.svg" class="cp" ng-show='$ctrl.showHIPERs' ng-click='$ctrl.showHIPERs=false'>
                     </div>
                 </div>
                 <common-table table-columns="$ctrl.tableColumnsOfHIPERs" data="$ctrl.missingHIPERsPaginationItems" ng-show="$ctrl.showHIPERs"></common-table>
@@ -32,8 +32,8 @@
                     <div class="page-title" style="font-size: 14px;"> PEs </div>
                     <div class="item-part-number" style="color:#A8216E">
                         <span style="margin-right: 10px;"> {{ $ctrl.PEs.length }} </span> 
-                        <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showPEs' ng-click='$ctrl.showPEs=true'>
-                        <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showPEs' ng-click='$ctrl.showPEs=false'>
+                        <img src="/images/arrow/arrow-down.svg" class="cp" ng-show='!$ctrl.showPEs' ng-click='$ctrl.showPEs=true'>
+                        <img src="/images/arrow/arrow-up.svg" class="cp" ng-show='$ctrl.showPEs' ng-click='$ctrl.showPEs=false'>
                     </div>
                 </div>
                 <common-table table-columns="$ctrl.tableColumnsOfPEs" data="$ctrl.pePaginationItems" ng-show="$ctrl.showPEs"></common-table>
@@ -44,8 +44,8 @@
                     <div class="page-title" style="font-size: 14px;"> Inconsistencies </div>
                     <div class="item-part-number" style="color:#A8216E">
                         <span style="margin-right: 10px;"> {{ $ctrl.inconsistencies.length }} </span> 
-                        <img src="/images/arrow-down.svg" class="cp" ng-show='!$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=true'>
-                        <img src="/images/arrow-up.svg" class="cp" ng-show='$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=false'>
+                        <img src="/images/arrow/arrow-down.svg" class="cp" ng-show='!$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=true'>
+                        <img src="/images/arrow/arrow-up.svg" class="cp" ng-show='$ctrl.showInconsistencies' ng-click='$ctrl.showInconsistencies=false'>
                     </div>
                 </div>
                 <common-table table-columns="$ctrl.tableColumnsOfInconsistencies" data="$ctrl.inconsistencyPaginationItems" ng-show="$ctrl.showInconsistencies"></common-table>

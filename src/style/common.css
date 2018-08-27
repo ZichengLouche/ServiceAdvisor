@@ -20,7 +20,7 @@
 .vt { vertical-align: top; } .vm { vertical-align: middle; } .vb { vertical-align: bottom; }
 
 /* Andy 2017.8.22 15:04 */
-.nbr { border-right: none !important }
+.nbr { border-right: none !important }	.nb { border: none !important }
 .di { display: inline; } .dib { display: inline-block; } .db { display: block; } .dn { display: none !important; }
 .df {
 	display: -webkit-box;   /* OLD - iOS 6-, Safari 3.1-6 */
@@ -92,7 +92,28 @@ ol, ul {
 	align-items: center;
   	height: 45px;
 }
+.flex-row-new {
+	display: flex;
+	padding: 15px 0px 15px 15px;
+    line-height: 15px;
+}
 
 .warnInfo {
     color: #FF5C49;
+}
+
+.col-1 {
+	min-width: calc(100%/12);
+}
+.col-2 {
+	min-width: calc(100%/6);
+}
+.col-3 {
+	min-width: calc(100%/4);
+}
+.col-4 {
+	min-width: calc(100%/3);
+}
+.col-6{
+	min-width: calc(100%/2);
 }
