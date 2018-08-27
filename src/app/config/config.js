@@ -30,6 +30,9 @@ export default {
             getReport: host + '/api/Missinghipers/getReport',
             removeReport: host + '/api/Missinghipers/removeReport',
             sendReport: host + '/api/sendingreport/v2/SendingReport',
+
+            getAparByAparId: host + '/api/apars/v1/me',
+            getAparByPtfId: host + '/api/apars/v2/aparByPtfId',
         }
     }
 }

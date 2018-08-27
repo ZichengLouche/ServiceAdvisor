@@ -1,0 +1,74 @@
+<div class="apar-detail-container">
+    <div class="page-title" style="position: relative; left: -80px;">
+        <img src="/images/back.png" class="cp" style="margin-right: 10px;" ui-sref="main.report"> 
+        <span style="vertical-align: middle;">Details for PI90729</span>
+    </div>
+
+    <div style="display: flex; flex-direction: column;">
+        <!-- <div style="align-self: flex-end;">
+            <button class="button-upload" ng-click="$ctrl.showUpload()">Details for PI90729</button>
+        </div> -->
+        <div class="table" style="margin: 70px 0px 0px 0px;">
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                    PTF
+                </div>
+                <div style="">UI53036，</div>
+            </div>
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                        PEPTF
+                </div>
+                <div style="">N/A</div>
+            </div>
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                        Recommendation
+                </div>
+                <div style="">UI53036，</div>
+            </div>
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                        Business Impact
+                </div>
+                <div style="">SYSTEMOUTAGE</div>
+            </div>
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                        Abstract
+                </div>
+                <div style="">Db2 Eots Incorrectly aborted an in-commit UR After RRS was restarted and had done a resync with rrsaf.</div>
+            </div>
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                        Trigger
+                </div>
+                <div style="">Db2 deferred End of Task processing may abort a DB2 UR that z/OS RRS was intending to commit.\nThis may occur if z/OS RRS is restarted and it has a UR that it intends to commit, but the Db2 application is cancelled or terminates before z/OS RRS is able to drive the Db2 RRSAF Commit Exit."</div>
+            </div>
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                        Local Fix
+                </div>
+                <div style="">N/A</div>
+            </div>
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                        Users Affected
+                </div>
+                <div style="">All Db2 11 & Db2 12 for z/os users of PITR(Point in time recovery) restart</div>
+            </div>
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                        Summary
+                </div>
+                <div style="">During Db2 PITR restart, any inflight thread(Unit of Recovery) that requires to be backed out, may abend in DSNIARPL equal 5008. This abend should be avoided because we know this thread will be recovered later by RESTORE utility. </div>
+            </div>
+            <div class="flex-row">
+                <div class="col-2 table-head nb" style="padding-left: 15px;">
+                        Conclusion
+                </div>
+                <div style="">The logic in DSNIARPL is changed to avoid dsniarpl:5008 abend during PITR restart.</div>
+            </div>
+        </div>
+    </div>
+</div>

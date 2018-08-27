@@ -46,4 +46,9 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
             params: { reportDetail: null },
             template: '<report-detail></report-detail>'
         })
+        .state('main.aparDetail', {
+            url: '/aparDetail/:aparId/:ptfId',
+            routerType: 'report',
+            template: '<apar-detail></apar-detail>'
+        })
 }
