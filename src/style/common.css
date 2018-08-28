@@ -84,13 +84,14 @@ ol, ul {
 	font-size: 12px;
 	color: #1D3649;
 }
-.table .flex-row:nth-child(even), .table > tbody > tr:nth-child(odd) {
+.table .flex-row:nth-child(even), .flex-row-new:nth-child(even), .table > tbody > tr:nth-child(odd) {
   	background-color: #F0F3F6;
 }
 .flex-row {
 	display: flex;
 	align-items: center;
-  	height: 45px;
+	/* height: 45px; */
+	line-height: 45px;
 }
 .flex-row-new {
 	display: flex;

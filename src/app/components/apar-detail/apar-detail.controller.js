@@ -13,7 +13,18 @@ export default class AparDetailController {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
             this.aparService.getAparByAparId(this.aparId).then((data) => {
                 this.apar = data;
-    
+                let starTotalNum = data.rating / 1 * 10 * 0.5;                      // half star per 0.1
+                let fullStarNum = (starTotalNum - parseInt(starTotalNum)) > 0.5 && (parseInt(starTotalNum) + 1) || parseInt(starTotalNum);
+                let halfStarNum = (starTotalNum % 1 > 0 && starTotalNum % 1 <= 0.5 && 1) || 0;
+                let emptyStarNum = 5 - fullStarNum - halfStarNum;
+
+                this.fullStar = new Array(fullStarNum);
+                this.halfStar = new Array(halfStarNum);
+                this.emptyStar = new Array(emptyStarNum);
+                this.fullStar.fill(1);
+                this.halfStar.fill(1);
+                this.emptyStar.fill(1);
+
             }).finally(() => {
                 this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
             });
