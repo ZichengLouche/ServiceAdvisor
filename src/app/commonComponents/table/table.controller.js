@@ -1,5 +1,6 @@
 export default class TableController {
-    constructor() {
+    constructor($rootScope, $scope) {
+        [this.$rootScope, this.$scope, this.name] = [$rootScope, $scope, 'TableController'];
     }
     setAll(){
         var isAll = this.isAll;
@@ -9,6 +10,7 @@ export default class TableController {
     }
     $onInit() {
         // console.log('TableController this:', this);
+        this.reportId = this.$scope.$parent.$ctrl.reportId;
     }
 
     $onChanges() {
@@ -20,3 +22,5 @@ export default class TableController {
     $postLink() {
     }
 }
+
+TableController.$inject = ['$rootScope', '$scope', '$state', '$stateParams', '$compile'];

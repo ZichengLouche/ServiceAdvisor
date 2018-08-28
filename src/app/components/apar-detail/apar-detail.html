@@ -1,6 +1,6 @@
 <div class="apar-detail-container">
     <div class="page-title" style="position: relative; left: -80px;">
-        <img src="/images/back.png" class="cp" style="margin-right: 10px;" ui-sref="main.report"> 
+        <img src="/images/back.png" class="cp" style="margin-right: 10px;" ui-sref="main.reportDetail({reportId: $ctrl.reportId })" onclick1="history.go(-1)"> 
         <span style="vertical-align: middle;">Details for {{ $ctrl.aparId || $ctrl.ptfId }}</span>
     </div>
 
