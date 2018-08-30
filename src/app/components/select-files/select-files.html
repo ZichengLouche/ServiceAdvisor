@@ -22,7 +22,7 @@
                     <input type="checkBox" data-ng-model="$ctrl.selectedMeplFiles[$index]" ng-true-value="{{file}}" ng-false-value="" ng-change="toggleCheckItem(item)"
                            id="myCheckbox[{{file.MEPLID}}]" name="myMepls" /> 
                 </div>
-                <div style="width:17%;"> {{ file.FILEPATH.slice(file.FILEPATH.lastIndexOf('/') + 1) }} </div>
+                <div style="width:17%;" class="wbba pr10"> {{ file.FILEPATH.slice(file.FILEPATH.lastIndexOf('/') + 1) }} </div>
                 <div style="width:12%;"> {{ file.RELEASE }} </div>
                 <div style="width:16%;"> {{ file.DATE | date:'y-MM-dd HH:mm:ss'}} </div>
                 <div style="width:18%;"> {{ file.REPORTTIME | date:'y-MM-dd HH:mm:ss'}} </div>

@@ -1,20 +1,28 @@
 <h2>{{$ctrl.title}}</h2>
 <table class="table">
     <thead class="table-head">
-        <tr >
-            <td ng-if="$ctrl.isShowCheckbox"><input type="checkbox" ng-model="$ctrl.isAll" ng-click="$ctrl.setAll()"/></td>
+        <tr>
+            <td ng-if="$ctrl.isShowCheckbox"><input type="checkbox" ng-model="$ctrl.isAll" ng-click="$ctrl.setAll()" /></td>
             <td ng-repeat="columnMap in $ctrl.tableColumns track by $index" ng-if="!first">{{columnMap[0]}}</td>
             <td ng-if="$ctrl.btns">operation</td>
         </tr>
     </thead>
     <tbody>
         <tr ng-repeat="entity in $ctrl.data track by $index">
-            <td ng-if="$ctrl.isShowCheckbox"><input type="checkbox" ng-checked="entity.isSelected"/></td>
+            <td ng-if="$ctrl.isShowCheckbox"><input type="checkbox" ng-checked="entity.isSelected" /></td>
             <!-- <td ng-repeat="item in entity.list track by $index">{{::item}}</td> -->
             <td ng-repeat="columnMap in $ctrl.tableColumns track by $index">
-                <span ng-if="['AparID', 'AparFixesArray'].join().indexOf(columnMap[1]) > -1" ui-sref='main.aparDetail({ aparId: entity[columnMap[1]], reportId: $parent.$ctrl.reportId })' class="actived-link"> {{ entity[columnMap[1]] }} </span>
-                <span ng-if="['PtfPe', 'Ptfiderror', 'Ptfidexpected'].join().indexOf(columnMap[1]) > -1" ui-sref='main.aparDetail({ ptfId: entity[columnMap[1]], reportId: $parent.$ctrl.reportId })' class="actived-link"> {{ entity[columnMap[1]] }} </span>
-                <span ng-if="['AparID', 'AparFixesArray', 'PtfPe', 'Ptfiderror', 'Ptfidexpected'].join().indexOf(columnMap[1]) == -1" > {{ entity[columnMap[1]] }} </span>
+                <span ng-if="['AparID', 'AparFixesArray'].join().indexOf(columnMap[1]) > -1" ui-sref='main.aparDetail({ aparId: entity[columnMap[1]], reportId: $parent.$ctrl.reportId })'
+                    class="actived-link" ng-class="{'wbnw': columnMap[1] == 'CloseDate'}" >
+                    {{ entity[columnMap[1]] }}
+                </span>
+                <span ng-if="['PtfPe', 'Ptfiderror', 'Ptfidexpected'].join().indexOf(columnMap[1]) > -1" ui-sref='main.aparDetail({ ptfId: entity[columnMap[1]], reportId: $parent.$ctrl.reportId })'
+                    class="actived-link" ng-class="{'wbnw': columnMap[1] == 'CloseDate'}" >
+                    {{ entity[columnMap[1]] }}
+                </span>
+                <span ng-if="['AparID', 'AparFixesArray', 'PtfPe', 'Ptfiderror', 'Ptfidexpected'].join().indexOf(columnMap[1]) == -1" ng-class="{'wbnw': columnMap[1] == 'CloseDate'}"> 
+                    {{ entity[columnMap[1]] }} 
+                </span>
             </td>
             <td ng-if="$ctrl.btns">
                 <button class="{{btn.class}}" ng-repeat="btn in $ctrl.btns track by $index" ng-click="btn.event(entity)">{{btn.name}}</button>

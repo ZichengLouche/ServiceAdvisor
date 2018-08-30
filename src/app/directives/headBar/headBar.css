@@ -9,6 +9,7 @@
   z-index: 260;
   background: #000000;
   color: #F9F9FB;
+  min-width: 540px;
 }
 
 .app-label {

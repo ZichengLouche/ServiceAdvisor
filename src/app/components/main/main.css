@@ -25,18 +25,19 @@
 
 /****** layout ******/
 
-.content-page .page {
+.page-container {
 	width: calc(100% - 100px);
-	margin: 0 auto;
+    margin: 0 auto;
+	min-width: 800px;
 }
 
-.content-page .page-title {
+.page-title {
     font-family: HelvNeue Bold for IBM; 
     font-size: 20px;
     color: #1D3649;
 }
 
-.content-page .item-part-number {
+.item-part-number {
     font-family: Lubalin Book for IBM;
     font-size: 25px;
   }

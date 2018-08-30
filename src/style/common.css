@@ -50,8 +50,11 @@
 }
 
 .cp { cursor: pointer; }
-.wbbl { word-break: break-all; }
+.wbba { word-break: break-all; }
 .wwbw { word-wrap: break-word; }
+.wbnw { white-space: nowrap; }
+
+
 
 ol, ul {
     list-style: none;
@@ -117,4 +120,8 @@ ol, ul {
 }
 .col-6{
 	min-width: calc(100%/2);
+}
+
+.col-min-width-114 {
+	min-width:114px;
 }
