@@ -9,59 +9,59 @@
             <button class="button-upload" ng-click="$ctrl.showUpload()">Details for PI90729</button>
         </div> -->
         <div class="table" style="margin: 70px 0px 0px 0px;">
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> PTF </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>{{ $ctrl.apar.ptfs.join() || 'N/A' }}</div>
+                <div class="column-padding">{{ $ctrl.apar.ptfs.join() || 'N/A' }}</div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> PEPTF </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>{{ $ctrl.apar.pes.join() || 'N/A' }}</div>
+                <div class="column-padding">{{ $ctrl.apar.pes.join() || 'N/A' }}</div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> Recommendation </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>
+                <div class="column-padding">
                     <img src="/images/star/star-full.svg" class="cp" ng-repeat="star in $ctrl.fullStar track by $index">
                     <img src="/images/star/star-half-full.svg" class="cp" ng-repeat="star in $ctrl.halfStar track by $index">
                     <img src="/images/star/star-empty.svg" class="cp" ng-repeat="star in $ctrl.emptyStar track by $index">
                 </div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> Business Impact </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>{{ $ctrl.apar.keyword || 'N/A' }}</div>
+                <div class="column-padding">{{ $ctrl.apar.keyword || 'N/A' }}</div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> Abstract </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>{{ $ctrl.apar.abstract || 'N/A' }}</div>
+                <div class="column-padding">{{ $ctrl.apar.abstract || 'N/A' }}</div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> Trigger </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>{{ $ctrl.apar.triggers || 'N/A' }}</div>
+                <div class="column-padding">{{ $ctrl.apar.triggers || 'N/A' }}</div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> Local Fix </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>{{ $ctrl.apar.localfix || 'N/A' }}</div>
+                <div class="column-padding">{{ $ctrl.apar.localfix || 'N/A' }}</div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> Users Affected </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>{{ $ctrl.apar.effect || 'N/A' }}</div>
+                <div class="column-padding">{{ $ctrl.apar.effect || 'N/A' }}</div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> Summary </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>{{ $ctrl.apar.summary || 'N/A' }} </div>
+                <div class="column-padding">{{ $ctrl.apar.summary || 'N/A' }} </div>
             </div>
-            <div class="flex-row">
+            <div class="flex-row lh-default">
                 <div class="table-head nb col-min-width-114" style="padding: 0px 0px 0px 15px;"> Conclusion </div>
                 <div class="vertical-line" style="margin: 0px 37px 0px 37px;"></div>
-                <div>{{ $ctrl.apar.conclusion || 'N/A' }}</div>
+                <div class="column-padding">{{ $ctrl.apar.conclusion || 'N/A' }}</div>
             </div>
         </div>
     </div>

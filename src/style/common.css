@@ -12,6 +12,8 @@
 .mb5 { margin-bottom: 5px; } .mb10 { margin-bottom: 10px; } .mb15 { margin-bottom: 15px; } .mb20 { margin-bottom: 20px; }
 .mt5 { margin-top: 5px; } .mt8 { margin-top: 8px; } .mt10 { margin-top: 10px; } .mt15 { margin-top: 15px; } .mt20 { margin-top: 20px; }
 
+.lh-default { line-height:normal !important; }
+
 .disable { cursor: not-allowed; opacity: 0.3; }
 .clear {*zoom: 1;} .clear:after {display: block; content: ""; height: 0; clear: both; overflow: hidden; visibility: hidden;}
 .fl { float: left; } .fr { float: right; }

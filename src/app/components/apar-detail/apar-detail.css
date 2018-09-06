@@ -10,3 +10,7 @@
   /* height: 10px; */
   align-self: stretch;
 }
+
+.column-padding {
+  padding: 15px 37px 15px 0px;
+}
