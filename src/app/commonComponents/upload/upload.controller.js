@@ -58,7 +58,7 @@ export default class UploadController {
         if ((!this.formData || this.meplFiles.length < 1) && !this.pmrNumber) {
             this.validationMessage = '*please select MEPL file or input PMR number!';
 
-        } else if (this.pmrNumber && !this.pmrNumber.match(/^\d{5},\d{3},\d{3}$/g)) {
+        } else if (this.pmrNumber && !this.pmrNumber.match(/^\d{5},\w{3},\d{3}$/g)) {
             this.validationMessage = '*PMR number format is invalid!';
 
         } else {
