@@ -52,4 +52,9 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
             // params: { reportId: null },
             template: '<apar-detail></apar-detail>'
         })
+        .state('main.wishList', {
+            url: '/wishList',
+            routerType: 'wishList',
+            template: '<wish-list></wish-list>'
+        })
 }

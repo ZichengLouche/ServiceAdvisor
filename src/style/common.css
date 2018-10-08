@@ -55,6 +55,11 @@
 .wbba { word-break: break-all; }
 .wwbw { word-wrap: break-word; }
 .wbnw { white-space: nowrap; }
+.ellipsis { 
+	white-space: nowrap;
+    overflow: hidden;
+	text-overflow: ellipsis; 
+}
 
 
 
