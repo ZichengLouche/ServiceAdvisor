@@ -34,8 +34,13 @@ class HttpClient {
         if (resp.status == 200) {
           if (resp.data) {
             defer.resolve(resp.data);
+
           } else {
-            defer.reject(resp.data.errorMessage);
+            defer.reject(`No content from the server response: ${ resp.data }`);
+            this.$rootScope.$broadcast('ALERT', {
+              error: true,
+              message: `No content from the server response: ${ resp.data }. Please contact the backend server admin for handling.`
+            });
           }
         } else {
           this.$log.error('$http response rejected :', resp);
@@ -64,6 +69,9 @@ class HttpClient {
   }
   ibmPostFormData(url, params) {
     return this.commonRequest('IBM', 'POST', url, params, 'multipart/form-data');
+  }
+  ibmDelete(url, params) {
+    return this.commonRequest('IBM', 'DELETE', url, params);
   }
 
   csGet(url) {
