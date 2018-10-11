@@ -21,7 +21,7 @@ export default class MainController {
             if (this.$state.current.name == 'main.home' && (!this.$rootScope.fileList || this.$rootScope.fileList.length < 1)) {
                 this.$rootScope.$broadcast('ALERT', {
                     message: 'Please upload MEPL files first!',
-                    isWarning: true,
+                    error: true,
                 });
                 return;
             }

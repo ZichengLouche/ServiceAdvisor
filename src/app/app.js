@@ -61,8 +61,8 @@ app.run(['$rootScope', '$log', '$state', '$window', 'authService', function ($ro
         $rootScope.$on('server:error', function (event, args) {
             $rootScope.$broadcast('BACKDROP', { isShow: false });
             $rootScope.$broadcast('ALERT', {
-                isWarning: true,
-                message: `An error occured while requesting api from the api service server. the server responded with a status of ${args.type} (Internal Server Error).
+                error: true,
+                message: `An error occured while requesting from the backend server. status : ${args.status}. detailed message : ${args.message}
                          Please try again later. If the issue persists, please contact Help.`
             });
         });
@@ -70,8 +70,8 @@ app.run(['$rootScope', '$log', '$state', '$window', 'authService', function ($ro
         $rootScope.$on('http:timedout', function (event, args) {
             $rootScope.$broadcast('BACKDROP', { isShow: false });
             $rootScope.$broadcast('ALERT', {
-                isWarning: true,
-                message: `The backend server response time out. the server responded with a status of ${args.type}. Please try again later. If the issue persists, please contact Help.`
+                error: true,
+                message: `The backend server response time out. the server responded with a status of ${args.status}. Please try again later. If the issue persists, please contact Help.`
             });
         });
 

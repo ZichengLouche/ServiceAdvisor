@@ -8,8 +8,9 @@ export default class MessagebarAlertController {
     this.$scope.$on('ALERT', (event, args) => {
       this.$scope.info = {};
       this.$scope.info.isShow = true;
-      this.$scope.info.isWarning = args.isWarning;
       this.$scope.info.success = args.success;
+      this.$scope.info.error = args.error;
+      this.$scope.info.warning = args.warning;
       this.$scope.info.message = args.message || '';
               
       // remove the alert after 3 seconds

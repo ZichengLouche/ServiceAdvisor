@@ -85,14 +85,14 @@ export default class SelectFilesController {
         if(!this.selectedMeplFiles || this.selectedMeplFiles.length < 1) {
             this.$rootScope.$broadcast('ALERT', {
                 message: 'Please select at least one MEPL file first!',
-                isWarning: true,
+                error: true,
             });
             return;
 
         } else if(this.selectedMeplFiles.length > 1) {
             this.$rootScope.$broadcast('ALERT', {
                 message: 'Only a single MEPL file report is currently supported!',
-                isWarning: true,
+                error: true,
             });
             
             this.selectedMeplFiles = [];

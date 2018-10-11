@@ -20,11 +20,18 @@
    	position: relative;
     display: inline-block;
 }
-.messagebar-alert .warning {
+
+/* Andy 2018.10.9 10:55 */
+.messagebar-alert .error {
     background: #d9534f;
     /* background: #e69b3e; */
     opacity: 0.8;
 }
+.messagebar-alert .warning {
+    background: #ec971f;
+    opacity: 0.8;
+}
+
 .messagebar-alert img {
 	width: 14px;
     vertical-align: middle;

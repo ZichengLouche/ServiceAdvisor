@@ -31,17 +31,9 @@ class HttpClient {
     var startTime = new Date().getTime();
     this.$http(option).then((resp) => {
       if (source == 'IBM') {
-        if (resp.status == 200) {
-          if (resp.data) {
+        if (String(resp.status).startsWith('2')) {
             defer.resolve(resp.data);
 
-          } else {
-            defer.reject(`No content from the server response: ${ resp.data }`);
-            this.$rootScope.$broadcast('ALERT', {
-              error: true,
-              message: `No content from the server response: ${ resp.data }. Please contact the backend server admin for handling.`
-            });
-          }
         } else {
           this.$log.error('$http response rejected :', resp);
           defer.reject('Request Failed. status=' + resp.status);
@@ -49,6 +41,7 @@ class HttpClient {
       } else {
         defer.resolve(resp.data);
       }
+      
     }, (err) => {
       var endTime = new Date().getTime();
       if (endTime - startTime >= Config.httpTimedout) {
