@@ -33,6 +33,10 @@ export default {
 
             getAparByAparId: host + '/api/apars/v1/me',
             getAparByPtfId: host + '/api/apars/v2/aparByPtfId',
+
+            addWishItem: host + '/api/wishes/v1/me/{aparId}',
+            deleteWishItem: host + '/api/wishes/v1/me/{aparId}',
+            getWishList: host + '/api/wishes/v1/me',
         }
     }
 }

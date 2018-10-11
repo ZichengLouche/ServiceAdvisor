@@ -16,6 +16,16 @@ class AparService {
     return this.httpClient.ibmGet(Config.WebServiceMapping.node.getAparByPtfId, { 'ptfId': ptfId });
   }
 
+  addWishItem(aparId) {
+    return this.httpClient.ibmPost(Config.WebServiceMapping.node.addWishItem.replace(/\{aparId\}/, aparId));
+  }
+  deleteWishItem(aparId) {
+    return this.httpClient.ibmDelete(Config.WebServiceMapping.node.deleteWishItem.replace(/\{aparId\}/, aparId));
+  }
+  getWishList(limit, skip) {
+    return this.httpClient.ibmGet(Config.WebServiceMapping.node.getWishList, { 'limit': limit, 'skip': skip });
+  }
+
 }
 
 AparService.$inject = ['httpClient'];

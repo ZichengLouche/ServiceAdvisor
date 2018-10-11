@@ -1,6 +1,6 @@
 <div class="wish-list-container">
     <div class="page-title" style="position: relative; left: -80px;">
-        <img src="/images/back.png" class="cp" style="margin-right: 10px;" ui-sref="main.reportDetail({reportId: $ctrl.reportId })" onclick1="history.go(-1)"> 
+        <img src="/images/back.png" class="cp" style="margin-right: 10px;" onclick="history.go(-1)"> 
         <span style="vertical-align: middle;">Wish List</span>
     </div>
 
@@ -19,6 +19,6 @@
                 </div>
             </div>
         </div>
-        <pager total-data-num="$ctrl.wishList.length" page-size="$ctrl.pageSize" query-result="$ctrl.queryPEsResultByPagination.bind($ctrl)" ></pager>
+        <pager total-data-num="$ctrl.wishList.length" page-size="$ctrl.pageSize" query-result="$ctrl.queryResultByPagination.bind($ctrl)" ></pager>
     </div>
 </div>

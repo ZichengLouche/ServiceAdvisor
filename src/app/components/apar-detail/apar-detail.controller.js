@@ -49,48 +49,41 @@ export default class AparDetailController {
         this.emptyStar.fill(1);
     }
 
-    delete() {
-        this.$rootScope.$broadcast('DIALOG', {
-            title: 'Are you sure to delete this report?',
-            content: '',
-            leftBtnName: 'Cancel',
-            rightBtnName: 'Delete',
-            submitAction: () => {
-                this.aparService.removeReport(this.reportId).then((data) => {
-                    this.$state.go('main.report');
-                })
+    // Andy 2018.10.8 11:57
+    bookmark() {
+        this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
+        this.aparService.addWishItem(this.apar.aparId).then((data) => {
+            if(data.id) {
+                this.$rootScope.$broadcast('ALERT', {
+                    message: `Add ${ this.apar.aparId } to Wish List successfully!`,
+                    success: true
+                });
+
+                this.apar.favorite = true;
+                this.$rootScope.$broadcast('wishList:number', { wishListNumberOffset: 1 });
             }
+
+        }).finally(() => {
+            this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
         });
     }
 
-    send() {
-        let originContent = '<input style="width: 100%;" type="email" class="input-border" placeholder="Enter email address" ng-model="$ctrl.sendToEmail" ng-change="$ctrl.validate()" required id="email">';
-        let compiledContent = this.$compile(originContent)(this.$scope);
-        // angular.element('.operationPrompt').append(compiledContent);
-        let cancelAction = () => {
-            this.sendToEmail = undefined;
-        };
+    concelBookmark() {
+        this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
+        this.aparService.deleteWishItem(this.apar.aparId).then((data) => {
+            this.$rootScope.$broadcast('ALERT', {
+                message: data.status == 'Success' ? `Remove ${ this.apar.aparId } from Wish List successfully!` : `Remove ${ this.apar.aparId } from Wish List failed!`,
+                success: data.status == 'Success'
+            });
 
-        this.$rootScope.$broadcast('DIALOG', {
-            title: 'Send report to',
-            content: compiledContent,
-            leftBtnName: 'Cancel',
-            rightBtnName: 'Done',
-            submitAction: () => {
-                // if(this.validate()) Promise.reject(`<span style="position: relative;top: 10px;">${ this.$rootScope.validationMessage }</span>`);
-                if (this.validate()) Promise.reject();
-
-                this.aparService.sendReport(this.reportDetail.meplId, this.sendToEmail).then((data) => {
-                    cancelAction();
-                    this.$rootScope.$broadcast('ALERT', {
-                        message: data == 'ok' ? 'Send report to the email successfully' : `Send report to the email failed: ${data}`,
-                        success: data == 'ok',
-                    });
-                })
-            },
-            cancelAction: cancelAction,
+            this.apar.favorite = false;
+            this.$rootScope.$broadcast('wishList:number', { wishListNumberOffset: -1 });
+            
+        }).finally(() => {
+            this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
         });
     }
+
 
 }
 

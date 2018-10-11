@@ -12,8 +12,12 @@
             </div>
             <div class="item-top" >
                 <div>
-                    <span style="font-size: 16px;">{{ report.content.reportName || 'DSN' }}</span>  <br>
-                    <span style="font-size: 12px; color: #777677;"><span style="color: #4178BE">{{ report.content.status || 'good' }}</span> - Updated: {{ report.createTime | date:"MMM dd, y" }} </span>
+                    <span style="font-size: 16px;">
+                        {{ report.content.reportName || 'DSN' }}  <span style="font-size: 12px; color: #777677;"> - {{ report.content.meplFile}} </span>
+                    </span>  <br>
+                    <span style="font-size: 12px; color: #777677;">
+                        <span style="color: #4178BE">{{ report.content.status || 'good' }}</span> - Updated: {{ report.createTime | date:"MMM dd, y" }} 
+                    </span>
                 </div>
                 <span style="font-family: Lubalin Book for IBM; font-size: 40px; color: #8CD211;">{{ report.content.score || 0 }}</span>
             </div>

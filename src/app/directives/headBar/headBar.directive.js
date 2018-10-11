@@ -27,8 +27,28 @@ export default class HeadbarDirective {
         });
 	}
 	
-	controller () {
+	controller ($rootScope, $scope, aparService) {
+        // Andy 2018.10.8 16:05 update wishListNumber
+        $scope.$on('wishList:number', (event, args) => {
+            if(args.wishListNumber) {
+                this.wishListNumber = `(${ args.wishListNumber })`;
+                
+            } else if (args.wishListNumberOffset) {
+                this.wishListNumber = `(${ this.wishListNumber + args.wishListNumberOffset })`;
 
+            } else {
+                this.wishListNumber = `(0)`;
+            }
+        });
+
+        // init wishListNumber
+        $rootScope.$broadcast('backdrop:loading', { isShow: true });
+        aparService.getWishList(0, 0).then((data) => {
+            this.wishListNumber = `(${ data.length })`;
+
+        }).finally(() => {
+            $rootScope.$broadcast('backdrop:loading', { isShow: false });
+        });
 	}
 }
 

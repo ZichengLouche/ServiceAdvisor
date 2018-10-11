@@ -9,6 +9,9 @@ export default angular.module('myApp.aparDetail', [])
         controller: controller,
         bindings: {
             showUpload: '&'
+        },
+        require: {
+            main: '^main'
         }
     })
     .name;
