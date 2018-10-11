@@ -7,7 +7,7 @@
     <div class="browser-nav cp {{ $ctrl.routerType == 'meplFiles' ? 'tab-actived' : ''}}" ng-click="$ctrl.switchTabState()('main.selectFiles')">MEPL Files</div>
     <div class="browser-nav cp" ng-class="{'tab-actived':$ctrl.routerType == 'report'}" ng-click="$ctrl.switchTabState()('main.report')">Reports</div>
     <div class="browser-nav cp" ng-class="{'tab-actived':$ctrl.routerType == 'wishList'}" ng-click="$ctrl.switchTabState()('main.wishList')">
-      Wish List {{ $ctrl.wishListNumber }}
+      Wish List {{ $ctrl.wishListNumberLabel }}
     </div>
   </div>
 </div>

@@ -76,8 +76,10 @@ export default class AparDetailController {
                 success: data.status == 'Success'
             });
 
-            this.apar.favorite = false;
-            this.$rootScope.$broadcast('wishList:number', { wishListNumberOffset: -1 });
+            if(data.status == 'Success') {
+                this.apar.favorite = false;
+                this.$rootScope.$broadcast('wishList:number', { wishListNumberOffset: -1 });
+            }
             
         }).finally(() => {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
