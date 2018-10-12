@@ -8,7 +8,8 @@ export default angular.module('myApp.wishList', [])
         template: template,
         controller: controller,
         bindings: {
-            showUpload: '&'
+            // currentPage: '<',
+            wishListNumber: '<'
         }
     })
     .name;

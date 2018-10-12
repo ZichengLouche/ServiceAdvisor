@@ -8,26 +8,34 @@ export default class WishListController {
         this.pageSize = 10;
     }
 
-    $onChanges() {
-        console.log('WishListController.$onChanges.this:', this);
+    $onChanges(changes) {
+        // console.log('WishListController.$onChanges.this:', changes);
+
+        this.queryResults();
     }
 
     $onInit() {
+        // console.log('onInit');
+    }
+    
+    $doCheck() {
+        // console.log('doCheck');
+    }
+
+    queryResults() {
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
         this.aparService.getWishList(0, 0).then((data) => {
             this.wishList = data;
             this.wishListNumber = data.length;
-            this.queryResultByPagination(this.currentPage, this.pageSize);
-
+            this.queryResultsByPagination(this.currentPage, this.pageSize);
             this.$rootScope.$broadcast('wishList:number', { wishListNumber: data.length });
 
         }).finally(() => {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
         });
-
     }
 
-    queryResultByPagination(currentPage, pageSize) {
+    queryResultsByPagination(currentPage, pageSize) {
         this.paginationItems = this.wishList.slice(pageSize * (currentPage - 1), (currentPage * pageSize));
         this.currentPage = currentPage;
     }
@@ -45,7 +53,15 @@ export default class WishListController {
                         success: data.status == 'Success'
                     });
                     
-                    this.$state.reload();
+                    // update state method 1 
+                    // this.$state.reload();
+
+                    if(data.status == 'Success') {
+                        // update state method 2 
+                        this.queryResults(this.currentPage, this.pageSize);
+
+                        // this.$scope.wishListNumber = this.wishListNumber -= 1;
+                    }
                 })
             }
         });
