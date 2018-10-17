@@ -12,7 +12,9 @@
                 <div style="padding-left: 45px;" data-ng-click="sortOrder('totalCost')"></div>
             </div>
             <div class="flex-row table-body" style="padding: 0px 45px 0px 45px;" data-ng-repeat="wishItem in $ctrl.paginationItems" ng-for="myCheckbox[wishItem.MEPLID]">
-                <div style="width:12%;"> {{ wishItem.aparId }} </div>
+                <div style="width:12%;"> 
+                    <span class="actived-link" ui-sref='main.aparDetail({ aparId: wishItem.aparId })'>{{ wishItem.aparId }}</span> 
+                </div>
                 <div style="width:88%;" class="ellipsis"> {{ wishItem.abstract }} </div>
                 <div style="padding-left: 45px;">
                     <img src="/images/delete.png" class="cp" data-ng-click='$ctrl.delete(wishItem)'>

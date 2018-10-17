@@ -1,8 +1,9 @@
 export default class ReportDetailController {
 	// common attrs Andy 2018.4.23 17:53
     // static $inject = ['http'];
-    constructor($rootScope, $scope, $state, $stateParams, $compile, fileService) {
-        [this.$rootScope, this.$scope, this.$state, this.$stateParams, this.$compile, this.fileService, this.name] = [$rootScope, $scope, $state, $stateParams, $compile, fileService, 'ReportDetailController'];
+    constructor($rootScope, $scope, $state, $stateParams, $compile, fileService, $filter, orderByFilter) {
+        [this.$rootScope, this.$scope, this.$state, this.$stateParams, this.$compile] = [$rootScope, $scope, $state, $stateParams, $compile];
+        [this.fileService, this.$filter, this.orderBy, this.name] = [fileService, $filter, orderByFilter, 'ReportDetailController'];
         $scope.$parent.$parent.$ctrl.routerType = $state.current.routerType;
         this.pageSize = 10;
     }
@@ -26,8 +27,8 @@ export default class ReportDetailController {
                                '2015-11-11', 'DSN3RRDF', '2']}
                              ];   
 
-        this.tableColumnsOfHIPERs = [['APAR','AparID'], ['PTF','PTFID'], ['ABSTRACT','Summary'], ['CLOSEDATE','CloseDate'], ['MODULE','Module'], ['SEV','Severity']];
-        this.tableColumnsOfPEs = [['PTF ERR','PtfPe'], ['APAR Fix','AparFixesArray'], ['PTF Fix','PtfFix'], ['Abstract Fix','Summary'], ['Closedate Fix','CloseDate'], ['MODULE','FirstModule'], ['SEV','Severity']];
+        this.tableColumnsOfHIPERs = [['APAR','AparID'], ['PTF','PTFID'], ['ABSTRACT','Summary'], ['CLOSEDATE','CloseDate'], ['MODULE','Module'], ['Rating/recommendation','Severity']];
+        this.tableColumnsOfPEs = [['PTF ERR','PtfPe'], ['APAR Fix','AparFixesArray'], ['PTF Fix','PtfFix'], ['Abstract Fix','Summary'], ['Closedate Fix','CloseDate'], ['MODULE','FirstModule'], ['Rating/recommendation','Severity']];
         this.tableColumnsOfInconsistencies = [['MODULE(Inconsistent)','modulehit'], ['PTF(Inconsistent)','Ptfiderror'], ['PTF(Expected)','Ptfidexpected'], ['Ptfidmepl','ptf-evi'],['Module (Evidence)','Moduleevidence']];
         
     }
@@ -44,6 +45,10 @@ export default class ReportDetailController {
                 this.PEs = this.reportDetail.peres || [];
                 this.inconsistencies = this.reportDetail.inconsistentres || [];
     
+                // Andy 2018.10.17 9:32
+                this.missingHIPERs = this.$filter('orderBy')(this.reportDetail.hiper, 'CloseDate' , true);
+                this.PEs = this.orderBy(this.reportDetail.peres, 'CloseDate' , true);
+
             }).finally(() => {
                 this.$rootScope.$broadcast('backdrop:loading', { isShow: false });
             });
@@ -138,6 +143,6 @@ export default class ReportDetailController {
     }
 }
 
-ReportDetailController.$inject = ['$rootScope', '$scope', '$state', '$stateParams', '$compile', 'fileService'];
+ReportDetailController.$inject = ['$rootScope', '$scope', '$state', '$stateParams', '$compile', 'fileService', '$filter', 'orderByFilter'];
 
 

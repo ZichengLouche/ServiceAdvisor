@@ -49,7 +49,7 @@ export default class WishListController {
             submitAction: () => {
                 return this.aparService.deleteWishItem(item.aparId).then((data) => {
                     this.$rootScope.$broadcast('ALERT', {
-                        message: data.status == 'Success' ? 'Delete record successfully!' : `Delete record failed!`,
+                        message: data.status == 'Success' ? 'Delete record successfully!' : 'Delete record failed!',
                         success: data.status == 'Success'
                     });
                     

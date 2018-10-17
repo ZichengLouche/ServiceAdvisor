@@ -1,6 +1,6 @@
 <div class="messagebar-alert"  data-ng-show="info.isShow">
   <div class="messagebar-container" data-ng-class="{'error' : info.error || !info.success, 'warning' : info.warning}">
     <img data-ng-if="info.success" src="/images/submittion-succeeded.svg">
-    <span>{{info.message}}</span>
+    <span ng-bind-html="info.message | trust">{{info.message}}</span>
   </div>
 </div>

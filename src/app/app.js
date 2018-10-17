@@ -63,7 +63,7 @@ app.run(['$rootScope', '$log', '$state', '$window', 'authService', function ($ro
             $rootScope.$broadcast('ALERT', {
                 error: true,
                 message: `An error occured while requesting from the backend server. status : ${args.status}. detailed message : ${args.message}
-                         Please try again later. If the issue persists, please contact Help.`
+                         <br>Please try again later. If the issue persists, please contact Help.`
             });
         });
     
