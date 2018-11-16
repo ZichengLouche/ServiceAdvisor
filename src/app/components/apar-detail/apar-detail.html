@@ -3,8 +3,8 @@
         <img src="/images/back.png" class="cp" style="margin-right: 10px;" ui-sref="main.reportDetail({reportId: $ctrl.reportId })" onclick="history.go(-1)"> 
         <span style="vertical-align: middle;">Details for {{ $ctrl.aparId || $ctrl.ptfId }}</span>
 
-        <img src="/images/bookmark-empty.svg" class="cp" style="position: relative; right: -80px; float: right;" ng-if="!$ctrl.apar.favorite" ng-click="$ctrl.bookmark()"> 
-        <img src="/images/bookmark-full.svg" class="cp" style="position: relative; right: -80px; float: right;" ng-if="$ctrl.apar.favorite" ng-click="$ctrl.concelBookmark()"> 
+        <img src="/images/bookmark-empty.svg" class="cp" style="position: relative; right: -80px; float: right; width: 20px;" ng-if="!$ctrl.apar.favorite" ng-click="$ctrl.bookmark()" title="Add to Wish List"> 
+        <img src="/images/bookmark-full.svg" class="cp" style="position: relative; right: -80px; float: right; width: 20px;" ng-if="$ctrl.apar.favorite" ng-click="$ctrl.concelBookmark()" title="Remove from Wish List"> 
     </div>
 
     <div style="display: flex; flex-direction: column;">

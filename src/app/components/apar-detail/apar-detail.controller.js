@@ -52,10 +52,10 @@ export default class AparDetailController {
     // Andy 2018.10.8 11:57
     bookmark() {
         this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
-        this.aparService.addWishItem(this.apar.aparId).then((data) => {
+        this.aparService.addWishItem(this.aparId).then((data) => {
             if(data.id) {
                 this.$rootScope.$broadcast('ALERT', {
-                    message: `Add ${ this.apar.aparId } to Wish List successfully!`,
+                    message: `Add ${ this.aparId } to Wish List successfully!`,
                     success: true
                 });
 

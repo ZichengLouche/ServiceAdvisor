@@ -8,7 +8,7 @@ const prodServer = 'https://zadvisort.mybluemix.net';
 const host = prodServer;
 
 export default {
-    httpTimedout: 30000,
+    httpTimedout: 60000,
     WebServiceMapping: {
         node: {
             postLogin: host + '/api/users/login',
