@@ -14,6 +14,8 @@ export default class AparDetailController {
             this.$rootScope.$broadcast('backdrop:loading', { isShow: true });
             this.aparService.getAparByAparId(this.aparId).then((data) => {
                 this.apar = data;
+                this.apar.ptfIds = this.apar.ptfIds.map((v)=> v.ptfId);
+                this.apar.peIds = this.apar.peIds.map((v)=> v.ptfId);
                 this.convertRating(data);
 
             }).finally(() => {

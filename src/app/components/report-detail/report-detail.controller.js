@@ -112,7 +112,7 @@ export default class ReportDetailController {
                 return this.fileService.sendReport(this.reportDetail.meplId, this.sendToEmail).then((data) => {
                     cancelAction();
                     this.$rootScope.$broadcast('ALERT', {
-                        message: data == 'ok' ? 'Send report to the email successfully' : `Send report to the email failed: ${data}`,
+                        message: data == 'ok' ? 'Send report to the email successfully' : `Send report to the email failed: ${data.code}`,
                         success: data == 'ok',
                     });
                 })

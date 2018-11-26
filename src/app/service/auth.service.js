@@ -51,8 +51,8 @@ class AuthService {
   }
 
   // logout service
-  logoutSSO() {
-    return this.httpClient.ibmPost(Config.WebServiceMapping.iba.postLogout);
+  appLogout() {
+    return this.httpClient.ibmPost(Config.WebServiceMapping.node.appLogout.replace(/\{deviceId\}/, 1));
   }
 
   logout() {

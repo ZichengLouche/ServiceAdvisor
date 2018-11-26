@@ -1,6 +1,8 @@
 import template from './headBar.html';
 // import HeadBarController from '../controllers/calendar';
 import './headBar.css';
+import Config from '../../config/config.js';
+import { setTimeout } from 'timers';
 
 export default class HeadbarDirective {
     constructor() {
@@ -27,7 +29,7 @@ export default class HeadbarDirective {
         });
 	}
 	
-	controller ($rootScope, $scope, aparService) {
+	controller ($rootScope, $scope, aparService, authService, $http) {
         // Andy 2018.10.8 16:05 update wishListNumber
         $scope.$on('wishList:number', (event, args) => {
             if(args.wishListNumber) {
@@ -52,6 +54,18 @@ export default class HeadbarDirective {
         }).finally(() => {
             $rootScope.$broadcast('backdrop:loading', { isShow: false });
         });
+
+        this.logout = () => {
+            authService.appLogout().then((data) => {
+                var iframe = document.createElement("iframe"); 
+                iframe.src = Config.WebServiceMapping.node.ssoLogout; 
+                iframe.width = 0;
+                iframe.height = 0;
+                document.querySelector('body').append(iframe);
+                setTimeout(() => window.location.href = Config.WebServiceMapping.node.ssoLogin, 1000);
+            })
+        }
+
 	}
 }
 

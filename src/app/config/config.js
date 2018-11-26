@@ -13,6 +13,8 @@ export default {
         node: {
             postLogin: host + '/api/users/login',
             ssoLogin: host + '/api/accounts/v1/login',
+            appLogout: host + '/api/accounts/v1/logout/{deviceId}',
+            ssoLogout: 'https://idaas.iam.ibm.com/pkmslogout',
             getAuthenticatedUser: host + '/api/accounts/v1/get',
 
             uploadMeplByLocalFile: host + '/api/mepls/v1/upload/file',
@@ -31,7 +33,7 @@ export default {
             removeReport: host + '/api/Missinghipers/removeReport',
             sendReport: host + '/api/sendingreport/v2/SendingReport',
 
-            getAparByAparId: host + '/api/apars/v1/me',
+            getAparByAparId: host + '/api/apars/v2/me',
             getAparByPtfId: host + '/api/apars/v2/aparByPtfId',
 
             addWishItem: host + '/api/wishes/v1/me/{aparId}',

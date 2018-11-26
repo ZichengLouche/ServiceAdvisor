@@ -1,8 +1,12 @@
 <div class="header-container">
   <div class="app-label">
     <div style="font-family: HelvNeue Medium for IBM;font-size: 12px;">IBM zServiceAdvisor Sample Application</div>
-    <div style="font-family: HelvNeue Roman for IBM;font-size: 14px;"><span class="user-icon"></span> {{$root.user.email}} </div>
+    <div style="font-family: HelvNeue Roman for IBM;font-size: 14px;">
+      <span class="user-icon"></span> {{$root.user.email}} 
+      <span class="ml30 cp" style="font-family: HelvNeue Bold for IBM;" ng-click="$ctrl.logout()">Log out</span>
+    </div>
   </div>
+
   <div>
     <div class="browser-nav cp {{ $ctrl.routerType == 'meplFiles' ? 'tab-actived' : ''}}" ng-click="$ctrl.switchTabState()('main.selectFiles')">MEPL Files</div>
     <div class="browser-nav cp" ng-class="{'tab-actived':$ctrl.routerType == 'report'}" ng-click="$ctrl.switchTabState()('main.report')">Reports</div>
