@@ -1,5 +1,5 @@
 
-// import LandingController from '../controller/landing.controller.js';
+import {LandingController} from '../controller/landing.controller.js';
 
 routing.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
 
@@ -12,8 +12,8 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
     $stateProvider
         .state('landing', {
             url: '/landing',
-            controller: 'landingController',
-            // controller: LandingController,
+            // controller: 'landingController',
+            controller: LandingController,
         })
         .state('login', {
             url: '/login',

@@ -42,6 +42,7 @@ app.run(['$rootScope', '$log', '$state', '$window', 'authService', function ($ro
     authService.getAuthenticatedUser().then((data) => {
         authService.saveUserInfo(data);
         $rootScope.user = data;
+        $rootScope.$broadcast('GET_USER', $rootScope.user);
 
     }).then(() => {
 
